@@ -1,5 +1,7 @@
 {
   "name": "Score",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
