@@ -14,7 +14,15 @@ const routes: Routes = [
   {
     path: 'live-fixture',
     loadChildren: () => import('./live-fixture/live-fixture.module').then( m => m.LiveFixturePageModule)
+  },  {
+    path: 'explore',
+    loadChildren: () => import('./explore/explore.module').then( m => m.ExplorePageModule)
+  },
+  {
+    path: 'league-list',
+    loadChildren: () => import('./league-list/league-list.module').then( m => m.LeagueListPageModule)
   }
+
 ];
 
 @NgModule({
