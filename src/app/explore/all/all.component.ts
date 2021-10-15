@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { AllCategoriesService } from 'src/app/services/all-categories.service';
 
@@ -10,20 +11,16 @@ import { AllCategoriesService } from 'src/app/services/all-categories.service';
 export class AllComponent implements OnInit {
 
   categories: Array<Category>;
-  constructor(private allCategoriesService: AllCategoriesService) { }
+  constructor(private allCategoriesService: AllCategoriesService, private router: Router) { }
 
   ngOnInit() {
-    this.categories = this.allCategoriesService.fetch().sort(this.categoriesSort);
+    this.categories = this.allCategoriesService.fetch();
   }
 
-  private categoriesSort(a: Category, b: Category) {
-    if(a.priority > b.priority) {
-      return -1;
-    }
-    if(a.priority < b.priority) {
-      return 1;
-    }
-    return 0;
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  onClick(category: Category) {
+    const navigationExtras: NavigationExtras = {state: {category}};
+    this.router.navigate(['league-list'], navigationExtras);
   }
 
 }

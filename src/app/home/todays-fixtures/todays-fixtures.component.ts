@@ -9,35 +9,29 @@ import { Fixture } from 'src/app/models/fixture';
 })
 export class TodaysFixturesComponent implements OnInit {
 
-  fixtures: Array<Fixture>
+  fixtures: Array<Fixture>;
   private prevTitle: string;
+  // private startInd: number;
 
-  constructor(private todaysFixturesLoader :TodaysFixturesLoaderService) { 
-    this.prevTitle = "";
+  constructor(private todaysFixturesLoader: TodaysFixturesLoaderService) {
+    this.prevTitle = '';
+    // this.startInd = -1;
   }
 
   ngOnInit() {
-    this.fixtures = this.todaysFixturesLoader.fetch().sort(this.todayfixturesort);
+    this.fixtures = this.todaysFixturesLoader.fetch();
   }
 
-  private todayfixturesort(a: Fixture, b: Fixture) {
-    if(a.startTimeStamp < b.startTimeStamp)
-      return 1;
-    if(a.startTimeStamp > b.startTimeStamp)
-      return -1;
-    let pa = a.homeTeam.userCount + a.awayTeam.userCount;
-    let pb = b.awayTeam.userCount + b.homeTeam.userCount;
-    if(pa > pb)
-      return -1;
-    if(pa < pb)
-      return 1;
-    return 0;
-  }
-
-  isTitleNeeded(title: string) {
-
-    if(title == this.prevTitle)
-      return false;
+  isTitleNeeded(title: string, code: number, ind: number): boolean {
+    // if(ind > 1 && code !== 0 && code !== 70) {
+    //   const id = 'item-'+(ind-1);
+    //   console.log(id);
+    //   const yOffSet = document.getElementById(id).offsetTop;
+    //   scrollTo(0, yOffSet);
+    //   // this.startInd = ind;
+    // }
+    if(title === this.prevTitle)
+      {return false;}
     this.prevTitle = title;
     return true;
   }

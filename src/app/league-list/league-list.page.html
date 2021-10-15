@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>league-list</ion-title>
+    <ion-title>{{ category.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+  <ion-item *ngFor="let league of leagues" (click)="onClick(league)">
+      <ion-row>
+          <ion-img class="league-icon" [src]="league.logo"></ion-img>
+          <ion-text class="label">{{league.name}}</ion-text>
+      </ion-row>
+  </ion-item>
 </ion-content>

@@ -20,6 +20,15 @@ export class AllCategoriesService {
       for(const i in parsed) {
         categories.push(new Category(parsed[i]));
       }
+      categories.sort((a: Category, b: Category) => {
+        if(a.priority > b.priority) {
+          return -1;
+        }
+        if(a.priority < b.priority) {
+          return 1;
+        }
+        return 0;
+      });
     });
     return categories;
   }
