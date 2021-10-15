@@ -18,15 +18,26 @@ export class LeagueOverviewComponent implements OnInit {
   seasons: Array<Season>;
   selectedSeason: Season;
   selectedLabel: string;
+  stats: any;
   constructor(sharedLeagueService: SharedLeagueService, private leagueService: LeagueService, private pickerController: PickerController) {
     this.league = sharedLeagueService.getData();
+    this.champs = this.leagueService.fetchChamps(this.league.id);
+    this.seasons = new Array<Season>();
+    this.leagueService.fetchSeasons(this.league.id).subscribe(data => {
+      const newLocal = 'seasons';
+      const parsed = data[newLocal];
+      for(const i of parsed) {
+        this.seasons.push(new Season(i));
+      }
+      this.selectedSeason = this.seasons[0];
+      this.selectedLabel = this.selectedSeason.year;
+      this.stats = leagueService.fetchStats(this.league.id, this.selectedSeason.id);
+    });
   }
 
   async ngOnInit() {
-    this.champs = await this.leagueService.fetchChamps(this.league.id);
-    this.seasons = await this.leagueService.fetchSeasons(this.league.id);
-    this.selectedLabel = 'this year';
   }
+
 
   async showPicker() {
     const columns = new Array();
@@ -47,6 +58,7 @@ export class LeagueOverviewComponent implements OnInit {
       const col = await picker.getColumn('season');
       this.selectedSeason = col.options[col.selectedIndex].value;
       this.selectedLabel = this.selectedSeason.year;
+      this.stats = this.leagueService.fetchStats(this.league.id, this.selectedSeason.id);
     });
   }
 

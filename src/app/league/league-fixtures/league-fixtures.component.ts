@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Season } from './../../models/season';
+import { LeagueService } from 'src/app/services/league.service';
+import { SharedLeagueService } from './../../shared/shared-league.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, ActivationStart, Router, RouterOutlet } from '@angular/router';
 import { League } from 'src/app/models/league';
+import { Fixture } from 'src/app/models/fixture';
 
 @Component({
   selector: 'app-league-fixtures',
@@ -9,9 +13,21 @@ import { League } from 'src/app/models/league';
 })
 export class LeagueFixturesComponent implements OnInit {
 
+  @ViewChild(RouterOutlet) outlet: RouterOutlet;
+
   league: League;
-  constructor() {}
-
-  ngOnInit() {}
-
+  fixtures: Array<Fixture>;
+  latestSeasonId: number;
+  constructor(private sharedLeagueService: SharedLeagueService, private leagueService: LeagueService) {}
+  
+  ngOnInit() {
+    this.league = this.sharedLeagueService.getData();
+    this.leagueService.fetchSeasons(this.league.id).subscribe(data => {
+      const newLocal = 'seasons';
+      const parsed = data[newLocal];
+      const latestSeason = new Season(parsed[0]);
+      this.latestSeasonId = latestSeason.id;
+      this.fixtures = this.leagueService.fetchFixtures(this.league.id, this.latestSeasonId);
+    });
+  }
 }

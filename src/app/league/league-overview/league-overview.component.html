@@ -10,23 +10,269 @@
         </ion-row>
       </ion-card>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-img class="card-img" [src]="champs[0].teamLogo"></ion-img>
-          <ion-text class="card-text">{{champs[0].name}} - {{champs[1]}}</ion-text>
+    <div *ngIf="champs && champs.length == 4">
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-text class="card-text">Champions</ion-text>
+            <ion-img class="card-img" [src]="champs[0].teamLogo"></ion-img>
+            <ion-text class="card-text ion-text-center">{{champs[0].name}} - {{champs[1]}}</ion-text>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-text class="card-text">Most Titles</ion-text>
+            <ion-img class="card-img" [src]="champs[2].teamLogo"></ion-img>
+            <ion-text class="card-text ion-text-center">{{champs[2].name}} - {{champs[3]}}</ion-text>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div> 
+    <div *ngIf="selectedLabel" >
+      <ion-row>
+        <ion-button (click)="showPicker()">{{selectedLabel}}</ion-button>
+      </ion-row>
+    </div>
+    <div *ngIf="stats" >
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-row>
+              <ion-text class="card-text ion-text-center">Most Goals</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-img class="card-img" [src]="stats['goals']['player'].photo"></ion-img>
+            </ion-row>
+            <ion-row>
+              <ion-text class="card-text ion-text-center">{{stats['goals']['player'].name}}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text class="card-text ion-text-center">{{stats['goals']['stat']}}</ion-text>
+            </ion-row>
         </ion-card>
       </ion-col>
       <ion-col>
         <ion-card>
-          <ion-img class="card-img" [src]="champs[2].teamLogo"></ion-img>
-          <ion-text class="card-text">{{champs[2].name}} - {{champs[3]}}</ion-text>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Assists</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['assists']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['assists']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['assists']['stat']}}</ion-text>
+          </ion-row>
         </ion-card>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-button (click)="showPicker()">{{selectedLabel}}</ion-button>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Goals+Assists</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['goalsassists']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['goalsassists']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['goalsassists']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Key Passes</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['keyPasses']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['keyPasses']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['keyPasses']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Accurate Passes</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['accuratePasses']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['accuratePasses']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['accuratePasses']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Successful Dribbles</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['successfulDribbles']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['successfulDribbles']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['successfulDribbles']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Interceptions</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['interceptions']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['interceptions']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['interceptions']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Tackles</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['tackles']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['tackles']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['tackles']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Clearences</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['clearances']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['clearances']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['clearances']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Saves</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['saves']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['saves']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['saves']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Clean Sheets</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['cleanSheet']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['cleanSheet']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['cleanSheet']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Least Conceded</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['leastConceded']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['leastConceded']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['leastConceded']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Yellow Cards</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['yellowCards']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['yellowCards']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['yellowCards']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">Most Red Cards</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-img class="card-img" [src]="stats['redCards']['player'].photo"></ion-img>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['redCards']['player'].name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text class="card-text ion-text-center">{{stats['redCards']['stat']}}</ion-text>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
   </ion-grid>
   
 </ion-content>

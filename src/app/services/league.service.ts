@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Contants } from '../models/contants';
 import { Season } from '../models/season';
+import { Player } from '../models/player';
+import { Fixture } from '../models/fixture';
+import { Category } from '../models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -32,14 +35,77 @@ export class LeagueService {
 
   fetchSeasons(id: number) {
     const url = Contants.seasons.replace('{league_id}', id.toString());
-    const response = this.http.get(url);
-    const res: Array<Season> = new Array();
-    response.subscribe(data => {
-      const newLocal = 'seasons';
-      const parsed = data[newLocal];
-      for(const i of parsed) {
-        res.push(new Season(i));
+    return this.http.get(url);
+  }
+
+  fetchStats(leagueId: number, seasonId: number) {
+    const url = Contants.leagueStats.replace('{league_id}', leagueId.toString()).replace('{season_id}', seasonId.toString());
+    const res = new Map();
+    this.http.get(url).subscribe(data => {
+      const parsed = data['topPlayers'];
+      res['goals'] = this.getStat(parsed['goals'], 'goals');
+      res['assists'] = this.getStat(parsed['assists'], 'assists');
+      res['goalsassists'] = this.getStat(parsed['goalsAssistsSum'], 'goalsAssistsSum');
+      res['keyPasses'] = this.getStat(parsed['keyPasses'], 'keyPasses');
+      res['accuratePasses'] = this.getStat(parsed['accuratePasses'], 'accuratePasses');
+      res['successfulDribbles'] = this.getStat(parsed['successfulDribbles'], 'successfulDribbles');
+      res['interceptions'] = this.getStat(parsed['interceptions'], 'interceptions');
+      res['tackles'] = this.getStat(parsed['tackles'], 'tackles');
+      res['clearances'] = this.getStat(parsed['clearances'], 'clearances');
+      res['saves'] = this.getStat(parsed['saves'], 'saves');
+      res['cleanSheet'] = this.getStat(parsed['cleanSheet'], 'cleanSheet');
+      res['leastConceded'] = this.getStat(parsed['leastConceded'], 'leastConceded');
+      res['yellowCards'] = this.getStat(parsed['yellowCards'], 'yellowCards');
+      res['redCards'] = this.getStat(parsed['redCards'], 'redCards');
+    });
+    return res;
+  }
+
+  private getStat(parsed, arg) {
+    const res = new Map();
+    res['player'] = new Player(parsed[0].player)
+    console.log(res['player']);
+    if(arg === 'leastConceded') {
+      arg = 'goalsConceded';
+    }
+    res['stat'] = parsed[0].statistics[arg];
+    const percent = parsed[0].statistics[arg+'Percentage'];
+    if(percent) {
+      res['stat'] = res['stat']+' - '+(percent.toFixed(2))+'%';
+    }
+    return res;
+  }
+
+  fetchFixtures(leagueId: number, seasonId: number) {
+    const url = Contants.leaguePastMatches.replace('{league_id}', leagueId.toString()).replace('{season_id}', seasonId.toString());
+    const res = Array<Fixture>();
+    this.http.get(url).subscribe(data => {
+      let parsed = data['tournamentTeamEvents'];
+      parsed = parsed[Object.keys(parsed)[0]];
+      const subKeys = Object.keys(parsed);
+      const ids = new Set();
+      for(const k of subKeys) {
+        for(const i of parsed[k]) {
+          const fixture = new Fixture(i, new Category(i['tournament']['uniqueTournament']));
+          if(!ids.has(fixture.id)) {
+            ids.add(fixture.id);
+            res.push(fixture);
+          }
+        }
       }
+
+      res.sort((a: Fixture, b: Fixture) => {
+        if(a.startTimeStamp > b.startTimeStamp)
+          return -1;
+        if(a.startTimeStamp < b.startTimeStamp)
+          return 1;
+        if(a.homeTeam.userCount > b.homeTeam.userCount)
+          return -1;
+        if(a.homeTeam.userCount < b.homeTeam.userCount)
+          return 1;
+        return 0;
+      });
+      console.log()
     });
     return res;
   }

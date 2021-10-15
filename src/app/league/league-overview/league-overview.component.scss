@@ -28,6 +28,8 @@ ion-card {
     margin: auto;
 }
 
-card-text {
-    margin: auto;
+.card-text {
+    margin: auto !important;
+    display: block;
+    text-align: center;
 }
