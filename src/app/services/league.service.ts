@@ -109,4 +109,36 @@ export class LeagueService {
     });
     return res;
   }
+
+  fetchStandingsList(leagueId: number, seasonId: number) {
+    const url = Contants.standings.replace('{league_id}', leagueId.toString()).replace('{season_id}', seasonId.toString());
+    const res = new Array();
+    this.http.get(url).subscribe(data => {
+      const parsed = data['standings'];
+      for(const i of parsed) {
+        res.push(this.getStandings(i));
+      }
+    });
+    return res;
+  }
+
+  private getStandings(parsed) {
+    const res = new Map();
+    res['name'] = parsed.name;
+    const standings = new Array();
+    for(const i of parsed['rows']) {
+      standings.push({team: new Team(i['team']), position: i['position'], played: i['matches'], points: i['points'],
+      wins: i['wins'], losses: i['losses'], draws: i['draws'], scoresFor: i['scoresFor'], scoresAgainst: i['scoresAgainst']});
+    }
+
+    standings.sort((a,b) => {
+      if(a.position < b.position)
+        return -1;
+      if(a.position > b.position)
+        return 1;
+      return 0;
+    });
+    res['standings'] = standings;
+    return res;
+  }
 }

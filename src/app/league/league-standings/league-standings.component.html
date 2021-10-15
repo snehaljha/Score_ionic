@@ -1,3 +1,33 @@
-<p>
-  league-standings works!
-</p>
+<ion-content>
+  <div *ngIf="standingsList" >
+    <ion-list *ngFor="let standings of standingsList">
+      <div *ngIf="standingsList.length > 1">
+        <ion-title>{{standings.name}}</ion-title>
+      </div>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="1">#</ion-col>
+            <ion-col size="4">Team</ion-col>
+            <ion-col size="1">M</ion-col>
+            <ion-col size="1">W</ion-col>
+            <ion-col size="1">L</ion-col>
+            <ion-col size="1">D</ion-col>
+            <ion-col size="2">GD</ion-col>
+            <ion-col size="1">P</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of standings['standings']">
+          <ion-col size="1">{{item.position}}</ion-col>
+          <ion-col size="4">{{item.team.name}}</ion-col>
+          <ion-col size="1">{{item.played}}</ion-col>
+          <ion-col size="1">{{item.wins}}</ion-col>
+          <ion-col size="1">{{item.losses}}</ion-col>
+          <ion-col size="1">{{item.draws}}</ion-col>
+          <ion-col size="2">{{item.scoresFor-item.scoresAgainst}}</ion-col>
+          <ion-col size="1">{{item.points}}</ion-col>
+        </ion-row>
+      </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
