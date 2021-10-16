@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { SharedTeamService } from './../../shared/shared-team.service';
 import { Component, OnInit } from '@angular/core';
 import { Team } from 'src/app/models/team';
 import { TopTeamsService } from 'src/app/services/top-teams.service';
@@ -9,10 +11,15 @@ import { TopTeamsService } from 'src/app/services/top-teams.service';
 })
 export class TopTeamsComponent implements OnInit {
   teams: Array<Team>;
-  constructor(private topTeamsService: TopTeamsService) { }
+  constructor(private topTeamsService: TopTeamsService, private sharedTeam: SharedTeamService, private router: Router) { }
 
   ngOnInit() {
     this.teams = this.topTeamsService.fetch();
+  }
+
+  gotoTeam(team: Team) {
+    this.sharedTeam.setData(team);
+    this.router.navigate(['team']);
   }
 
 }

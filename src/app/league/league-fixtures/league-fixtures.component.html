@@ -1,8 +1,11 @@
 <ion-content>
-  <div *ngIf="fixtures" >
+  <div *ngIf="fixtures; else NA" >
     <ion-list>
       <ion-item *ngFor="let fixture of fixtures">
         <ion-grid>
+          <ion-row *ngIf="isDateNeeded(fixture.getDate())">
+            <ion-text>{{fixture.getDate()}}</ion-text>
+          </ion-row>
           <ion-row>
             <ion-card class="match-card">
               <ion-grid>
@@ -56,4 +59,9 @@
     
   </ion-list>
 </div>
+<ng-template #NA>
+  <ion-title>
+    No Fixtures Available
+  </ion-title>
+</ng-template>
 </ion-content>

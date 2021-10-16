@@ -18,8 +18,13 @@ export class Player {
         this.position = parsed.position;
         this.userCount = parsed.userCount;
         this.id = parsed.id;
-        this.photo = (this.position === 'coach'?Contants.managerPhoto: Contants.playerPhoto).replace('{player_id}', this.id.toString());
+        this.photo = Contants.playerPhoto.replace('{player_id}', this.id.toString());
         this.preferredFoot = parsed.preferredFoot;
         this.shirtNumber = parsed.shirtNumber;
+    }
+
+    makeCoach() {
+        this.position = 'Coach';
+        this.photo = Contants.managerPhoto.replace('{player_id}', this.id.toString());
     }
 }

@@ -23,13 +23,6 @@ export class TodaysFixturesComponent implements OnInit {
   }
 
   isTitleNeeded(title: string, code: number, ind: number): boolean {
-    // if(ind > 1 && code !== 0 && code !== 70) {
-    //   const id = 'item-'+(ind-1);
-    //   console.log(id);
-    //   const yOffSet = document.getElementById(id).offsetTop;
-    //   scrollTo(0, yOffSet);
-    //   // this.startInd = ind;
-    // }
     if(title === this.prevTitle)
       {return false;}
     this.prevTitle = title;

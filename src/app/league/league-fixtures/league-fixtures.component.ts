@@ -13,12 +13,13 @@ import { Fixture } from 'src/app/models/fixture';
 })
 export class LeagueFixturesComponent implements OnInit {
 
-  @ViewChild(RouterOutlet) outlet: RouterOutlet;
-
   league: League;
   fixtures: Array<Fixture>;
   latestSeasonId: number;
-  constructor(private sharedLeagueService: SharedLeagueService, private leagueService: LeagueService) {}
+  lastDate: string;
+  constructor(private sharedLeagueService: SharedLeagueService, private leagueService: LeagueService) {
+    this.lastDate = '';
+  }
   
   ngOnInit() {
     this.league = this.sharedLeagueService.getData();
@@ -29,5 +30,12 @@ export class LeagueFixturesComponent implements OnInit {
       this.latestSeasonId = latestSeason.id;
       this.fixtures = this.leagueService.fetchFixtures(this.league.id, this.latestSeasonId);
     });
+  }
+
+  isDateNeeded(date: string) {
+    if(date === this.lastDate)
+      return false;
+    this.lastDate = date;
+    return true;
   }
 }

@@ -1,5 +1,5 @@
 <ion-content>
-  <div *ngIf="standingsList" >
+  <div *ngIf="standingsList; else NA" >
     <ion-list *ngFor="let standings of standingsList">
       <div *ngIf="standingsList.length > 1">
         <ion-title>{{standings.name}}</ion-title>
@@ -30,4 +30,9 @@
       </ion-item>
     </ion-list>
   </div>
+  <ng-template #NA>
+    <ion-title>
+      Standings not available
+    </ion-title>
+  </ng-template>
 </ion-content>

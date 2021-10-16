@@ -35,7 +35,7 @@
     </div>
     <div *ngIf="stats" >
       <ion-row>
-        <ion-col>
+        <ion-col *ngIf="stats['goals']" >
           <ion-card>
             <ion-row>
               <ion-text class="card-text ion-text-center">Most Goals</ion-text>
@@ -51,7 +51,7 @@
             </ion-row>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col *ngIf="stats['assists']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Assists</ion-text>
@@ -69,7 +69,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col *ngIf="stats['goalsassists']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Goals+Assists</ion-text>
@@ -85,7 +85,7 @@
           </ion-row>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col *ngIf="stats['keyPasses']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Key Passes</ion-text>
@@ -103,7 +103,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col *ngIf="stats['accuratePasses']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Accurate Passes</ion-text>
@@ -119,7 +119,7 @@
           </ion-row>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col *ngIf="stats['successfulDribbles']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Successful Dribbles</ion-text>
@@ -137,7 +137,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col *ngIf="stats['interceptions']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Interceptions</ion-text>
@@ -153,7 +153,7 @@
           </ion-row>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col *ngIf="stats['tackles']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Tackles</ion-text>
@@ -171,7 +171,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col *ngIf="stats['clearances']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Clearences</ion-text>
@@ -187,7 +187,7 @@
           </ion-row>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col *ngIf="stats['saves']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Saves</ion-text>
@@ -205,7 +205,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col *ngIf="stats['cleanSheet']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Clean Sheets</ion-text>
@@ -221,7 +221,7 @@
           </ion-row>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col *ngIf="stats['leastConceded']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Least Conceded</ion-text>
@@ -239,7 +239,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col *ngIf="stats['yellowCards']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Yellow Cards</ion-text>
@@ -255,7 +255,7 @@
           </ion-row>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col *ngIf="stats['redCards']">
         <ion-card>
           <ion-row>
             <ion-text class="card-text ion-text-center">Most Red Cards</ion-text>
