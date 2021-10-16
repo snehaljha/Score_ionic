@@ -10,8 +10,11 @@ import { Category } from '../models/category';
 })
 export class TeamService {
 
+  private overalls: any; //map
+
   private order: Array<string>;
   constructor(private http: HttpClient) {
+    this.overalls = new Map();
     this.order = ['G', 'D', 'M', 'F'];
   }
 
@@ -79,5 +82,28 @@ export class TeamService {
       });
     });
     return fixtures;
+  }
+
+  fetchStatSeason(teamId: number) {
+    const url = Contants.teamStatsSeason.replace('{team_id}', teamId.toString());
+    return this.http.get(url);
+  }
+
+  fetchOverallStats(teamId: number, tournamentId: number, seasonId: number) {
+    const url = Contants.teamOverallStats.replace('{team_id}', teamId.toString()).replace('{league_id}', tournamentId.toString()).replace('{season_id}', seasonId.toString());
+    const key = teamId.toString()+':'+tournamentId.toString()+':'+seasonId.toString();
+    if(this.overalls.has(key))
+      return this.overalls[key];
+    const res = new Array();
+    this.http.get(url).subscribe(data => {
+      const parsed = data['statistics'];
+      const keys = Object.keys(parsed);
+      for(const i of keys) {
+        if(i == 'id' || i == 'matches' || i == 'awardedMathces')
+          continue;
+        res.push({name: i, value: parsed[i]});
+      }
+    });
+    return res;
   }
 }
