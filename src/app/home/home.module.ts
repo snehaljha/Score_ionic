@@ -1,5 +1,5 @@
+import { LiveFixturesComponent } from './live-fixtures/live-fixtures.component';
 import { MyFixturesComponent } from './my-fixtures/my-fixtures.component';
-import { TodaysFixturesComponent } from './todays-fixtures/todays-fixtures.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,6 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, TodaysFixturesComponent, MyFixturesComponent]
+  declarations: [HomePage, MyFixturesComponent, LiveFixturesComponent]
 })
 export class HomePageModule {}

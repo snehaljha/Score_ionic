@@ -1,21 +1,19 @@
-import { TodaysFixturesLoaderService } from './../../services/todays-fixtures-loader.service';
 import { Component, OnInit } from '@angular/core';
-import { Fixture } from 'src/app/models/fixture';
+import { Fixture } from '../models/fixture';
+import { TodaysFixturesLoaderService } from '../services/todays-fixtures-loader.service';
 
 @Component({
   selector: 'app-todays-fixtures',
-  templateUrl: './todays-fixtures.component.html',
-  styleUrls: ['./todays-fixtures.component.scss'],
+  templateUrl: './todays-fixtures.page.html',
+  styleUrls: ['./todays-fixtures.page.scss'],
 })
-export class TodaysFixturesComponent implements OnInit {
-
+export class TodaysFixturesPage implements OnInit {
+  
   fixtures: Array<Fixture>;
   private prevTitle: string;
-  // private startInd: number;
 
   constructor(private todaysFixturesLoader: TodaysFixturesLoaderService) {
     this.prevTitle = '';
-    // this.startInd = -1;
   }
 
   ngOnInit() {
@@ -28,5 +26,4 @@ export class TodaysFixturesComponent implements OnInit {
     this.prevTitle = title;
     return true;
   }
-
 }

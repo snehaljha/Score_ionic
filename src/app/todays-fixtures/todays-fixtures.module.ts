@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LiveFixturePageRoutingModule } from './live-fixture-routing.module';
+import { TodaysFixturesPageRoutingModule } from './todays-fixtures-routing.module';
 
-import { LiveFixturePage } from './live-fixture.page';
+import { TodaysFixturesPage } from './todays-fixtures.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LiveFixturePageRoutingModule
+    TodaysFixturesPageRoutingModule
   ],
-  declarations: [LiveFixturePage]
+  declarations: [TodaysFixturesPage]
 })
-export class LiveFixturePageModule {}
+export class TodaysFixturesPageModule {}

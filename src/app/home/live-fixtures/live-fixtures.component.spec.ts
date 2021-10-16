@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { LiveFixturePage } from './live-fixture.page';
+import { LiveFixturesComponent } from './live-fixtures.component';
 
-describe('LiveFixturePage', () => {
-  let component: LiveFixturePage;
-  let fixture: ComponentFixture<LiveFixturePage>;
+describe('LiveFixturesComponent', () => {
+  let component: LiveFixturesComponent;
+  let fixture: ComponentFixture<LiveFixturesComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LiveFixturePage ],
+      declarations: [ LiveFixturesComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LiveFixturePage);
+    fixture = TestBed.createComponent(LiveFixturesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

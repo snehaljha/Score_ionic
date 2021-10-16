@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Fixture } from '../models/fixture';
-import { LiveFixturesService } from '../services/live-fixtures.service';
+import { Fixture } from 'src/app/models/fixture';
+import { LiveFixturesService } from 'src/app/services/live-fixtures.service';
 
 @Component({
-  selector: 'app-live-fixture',
-  templateUrl: './live-fixture.page.html',
-  styleUrls: ['./live-fixture.page.scss'],
+  selector: 'app-live-fixtures',
+  templateUrl: './live-fixtures.component.html',
+  styleUrls: ['./live-fixtures.component.scss'],
 })
-export class LiveFixturePage implements OnInit {
-
+export class LiveFixturesComponent implements OnInit {
   fixtures: Array<Fixture>;
   private prevTitle: string;
 
@@ -27,5 +26,4 @@ export class LiveFixturePage implements OnInit {
     this.prevTitle = title;
     return true;
   }
-
 }

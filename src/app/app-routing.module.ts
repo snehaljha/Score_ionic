@@ -12,9 +12,6 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'live-fixture',
-    loadChildren: () => import('./live-fixture/live-fixture.module').then( m => m.LiveFixturePageModule)
-  },  {
     path: 'explore',
     loadChildren: () => import('./explore/explore.module').then( m => m.ExplorePageModule)
   },
@@ -29,6 +26,10 @@ const routes: Routes = [
   {
     path: 'team',
     loadChildren: () => import('./team/team.module').then( m => m.TeamPageModule)
+  },
+  {
+    path: 'todays-fixtures',
+    loadChildren: () => import('./todays-fixtures/todays-fixtures.module').then( m => m.TodaysFixturesPageModule)
   }
 
 ];

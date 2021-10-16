@@ -1,5 +1,5 @@
+import { LiveFixturesComponent } from './live-fixtures/live-fixtures.component';
 import { MyFixturesComponent } from './my-fixtures/my-fixtures.component';
-import { TodaysFixturesComponent } from './todays-fixtures/todays-fixtures.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -12,11 +12,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'todays-fixtures'
+        redirectTo: 'live-fixtures'
       },
       {
-        path: 'todays-fixtures',
-        component: TodaysFixturesComponent
+        path: 'live-fixtures',
+        component: LiveFixturesComponent
       },
       {
         path: 'my-fixtures',
