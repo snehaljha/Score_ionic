@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Category } from '../models/category';
 import { Contants } from '../models/contants';
 import { Fixture } from '../models/fixture';
+import { League } from '../models/league';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,9 @@ export class LiveFixturesService {
       const parsed = data[newLocal];
       for(const i in parsed) {
         if(parsed[i].tournament.uniqueTournament != null) {
-          fixtures.push(new Fixture(parsed[i], new Category(parsed[i].tournament.uniqueTournament)));
+          fixtures.push(new Fixture(parsed[i], new League(parsed[i].tournament.uniqueTournament)));
         } else {
-          fixtures.push(new Fixture(parsed[i], new Category(parsed[i].tournament.category)));
+          fixtures.push(new Fixture(parsed[i], new League(parsed[i].tournament.category)));
         }
       }
       fixtures.sort((a: Fixture, b: Fixture) => {

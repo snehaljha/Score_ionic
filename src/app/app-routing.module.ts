@@ -30,7 +30,11 @@ const routes: Routes = [
   {
     path: 'todays-fixtures',
     loadChildren: () => import('./todays-fixtures/todays-fixtures.module').then( m => m.TodaysFixturesPageModule)
+  },  {
+    path: 'fixture',
+    loadChildren: () => import('./fixture/fixture.module').then( m => m.FixturePageModule)
   }
+
 
 ];
 

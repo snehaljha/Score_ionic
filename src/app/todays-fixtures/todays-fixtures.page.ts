@@ -1,5 +1,8 @@
+import { Router } from '@angular/router';
+import { SharedLeagueService } from './../shared/shared-league.service';
 import { Component, OnInit } from '@angular/core';
 import { Fixture } from '../models/fixture';
+import { League } from '../models/league';
 import { TodaysFixturesLoaderService } from '../services/todays-fixtures-loader.service';
 
 @Component({
@@ -12,7 +15,7 @@ export class TodaysFixturesPage implements OnInit {
   fixtures: Array<Fixture>;
   private prevTitle: string;
 
-  constructor(private todaysFixturesLoader: TodaysFixturesLoaderService) {
+  constructor(private todaysFixturesLoader: TodaysFixturesLoaderService, private sharedLeague: SharedLeagueService, private router: Router) {
     this.prevTitle = '';
   }
 
@@ -25,5 +28,10 @@ export class TodaysFixturesPage implements OnInit {
       {return false;}
     this.prevTitle = title;
     return true;
+  }
+
+  gotoLeague(league: League) {
+    this.sharedLeague.setData(league);
+    this.router.navigate(['league']);
   }
 }

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Contants } from '../models/contants';
 import { Fixture } from '../models/fixture';
 import { Category } from '../models/category';
+import { League } from '../models/league';
 
 @Injectable({
   providedIn: 'root'
@@ -64,14 +65,14 @@ export class TeamService {
     this.http.get(url).subscribe(data => {
       const parsed = data['events'];
       for(const i of parsed) {
-        fixtures.push(new Fixture(i, new Category(i['tournament']['uniqueTournament'])));
+        fixtures.push(new Fixture(i, new League(i['tournament']['uniqueTournament'])));
       }
     });
     url = Contants.teamNextMatches.replace('{team_id}', teamId.toString());
     this.http.get(url).subscribe(data => {
       const parsed = data['events'];
       for(const i of parsed) {
-        fixtures.push(new Fixture(i, new Category(i['tournament']['uniqueTournament'])));
+        fixtures.push(new Fixture(i, new League(i['tournament']['uniqueTournament'])));
       }
       fixtures.sort((a: Fixture, b: Fixture) => {
         if(a.startTimeStamp < b.startTimeStamp)

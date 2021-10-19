@@ -6,6 +6,7 @@ import { Season } from '../models/season';
 import { Player } from '../models/player';
 import { Fixture } from '../models/fixture';
 import { Category } from '../models/category';
+import { League } from '../models/league';
 
 @Injectable({
   providedIn: 'root'
@@ -86,7 +87,7 @@ export class LeagueService {
       const ids = new Set();
       for(const k of subKeys) {
         for(const i of parsed[k]) {
-          const fixture = new Fixture(i, new Category(i['tournament']['uniqueTournament']));
+          const fixture = new Fixture(i, new League(i['tournament']['uniqueTournament']));
           if(!ids.has(fixture.id)) {
             ids.add(fixture.id);
             res.push(fixture);

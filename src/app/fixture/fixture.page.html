@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="fixture-events">
+        <ion-label>Details</ion-label>
+      </ion-tab-button>
+      
+      <ion-tab-button tab="fixture-linups">
+        <ion-label>Lineups</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button *ngIf="info['isStats']"  tab="fixture-stats">
+        <ion-label>Stats</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="fixture-others">
+        <ion-label>Others</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+  </ion-content>

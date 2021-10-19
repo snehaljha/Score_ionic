@@ -1,10 +1,11 @@
 import { Category } from './category';
 import { Contants } from './contants';
 import { FixtureScore } from './fixture-score';
+import { League } from './league';
 import { Team } from './team';
 export class Fixture {
 
-    category: Category;
+    league: League;
     statusCode: number;
     homeTeam: Team;
     awayTeam: Team;
@@ -13,8 +14,8 @@ export class Fixture {
     id: number;
     startTimeStamp: number;
 
-    constructor(response, category: Category) {
-        this.category = category;
+    constructor(response, league: League) {
+        this.league = league;
         this.statusCode = response['status']['code'];
         this.homeTeam = new Team(response['homeTeam']);
         this.awayTeam = new Team(response['awayTeam']);

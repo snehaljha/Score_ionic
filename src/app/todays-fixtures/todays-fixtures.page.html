@@ -8,11 +8,11 @@
   <ion-list>
     <ion-item *ngFor="let fixture of fixtures; let i=index">
       <ion-grid>
-        <div *ngIf="isTitleNeeded(fixture.category.name, fixture.statusCode, i)" [id]="'item-' + i">
-          <ion-row>
-            <ion-img [src]="fixture.category.getTournamentLogo()" class="team-img"></ion-img>
+        <div *ngIf="isTitleNeeded(fixture.league.name, fixture.statusCode, i)" [id]="'item-' + i">
+          <ion-row (click)="gotoLeague(fixture.league)" >
+            <ion-img [src]="fixture.league.logo" class="team-img"></ion-img>
             <ion-text>
-              {{fixture.category.name}}
+              {{fixture.league.name}}
             </ion-text>
           </ion-row>
         </div>

@@ -2,16 +2,16 @@
   <ion-list>
     <ion-item *ngFor="let fixture of fixtures">
       <ion-grid>
-        <div *ngIf="isTitleNeeded(fixture.category.name)">
-          <ion-row>
-            <ion-img [src]="fixture.category.getTournamentLogo()" class="team-img"></ion-img>
+        <div *ngIf="isTitleNeeded(fixture.league.name)">
+          <ion-row (click)="gotoLeague(fixture.league)" >
+            <ion-img [src]="fixture.league.logo" class="team-img"></ion-img>
             <ion-text>
-              {{fixture.category.name}}
+              {{fixture.league.name}}
             </ion-text>
           </ion-row>
         </div>
         <ion-row>
-          <ion-card class="match-card">
+          <ion-card class="match-card" (click)="gotoFixture(fixture)" >
             <ion-grid>
               <ion-row>
                 <ion-col size=2>
