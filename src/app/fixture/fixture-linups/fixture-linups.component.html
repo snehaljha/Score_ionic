@@ -1,3 +1,171 @@
-<p>
-  fixture-linups works!
-</p>
+<ion-content>
+  <ion-text *ngIf="linupDetails && linupDetails.confirmation" class="info">{{linupDetails.confirmation}}</ion-text>
+  <ion-toolbar *ngIf="linupDetails" >
+    <ion-segment *ngIf="fixture"  value="home" [(ngModel)]="selectedTeam">
+      <ion-row>
+        <ion-col>
+          <ion-segment-button value="home">
+            {{fixture.homeTeam.name}}
+          </ion-segment-button>
+        </ion-col>
+        <ion-col>
+          <ion-segment-button value="away">
+            {{fixture.awayTeam.name}}
+          </ion-segment-button>
+        </ion-col>
+      </ion-row>
+    </ion-segment>
+
+    <div *ngIf="selectedTeam == 'away' && linupDetails['away']; else HOME">
+
+      <ion-row *ngIf="linupDetails['away']['formation']" >
+        <ion-text class="info">{{linupDetails['away']['formation']}}</ion-text>
+      </ion-row>
+      <ion-list *ngIf="linupDetails['away']['players']" >
+        <ion-item *ngFor="let player of linupDetails['away']['players']">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="1">
+                <ion-text>{{player.shirtNumber}}</ion-text>
+              </ion-col>
+              <ion-col size="3">
+                <ion-img [src]="player.photo" class="player-img"></ion-img>
+              </ion-col>
+              <ion-col size="7">
+                <ion-text>{{player.name}}</ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <ion-text>{{player.position}}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+
+      <ion-row *ngIf="linupDetails['away']['subs']" class="info">
+        <ion-text class="info">Substitutes</ion-text>
+      </ion-row>
+      <ion-list *ngIf="linupDetails['away']['subs']">
+        <ion-item *ngFor="let player of linupDetails['away']['subs']">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="1">
+                <ion-text>{{player.shirtNumber}}</ion-text>
+              </ion-col>
+              <ion-col size="3">
+                <ion-img [src]="player.photo" class="player-img"></ion-img>
+              </ion-col>
+              <ion-col size="7">
+                <ion-text>{{player.name}}</ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <ion-text>{{player.position}}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+
+      <ion-row>
+        <ion-text *ngIf="linupDetails['away']['missingPlayers']" class="info">Missing Players</ion-text>
+      </ion-row>
+      <ion-list *ngIf="linupDetails['away']['missingPlayers']">
+        <ion-item *ngFor="let player of linupDetails['away']['missingPlayers']">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="1">
+                <ion-text>{{player.shirtNumber}}</ion-text>
+              </ion-col>
+              <ion-col size="3">
+                <ion-img [src]="player.photo" class="player-img"></ion-img>
+              </ion-col>
+              <ion-col size="7">
+                <ion-text>{{player.name}}</ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <ion-text>{{player.position}}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </div>
+
+
+    <ng-template #HOME>
+      <div *ngIf="linupDetails['home']">
+        <ion-row *ngIf="linupDetails['home']['formation']">
+          <ion-text class="info">{{linupDetails.home.formation}}</ion-text>
+        </ion-row>
+        <ion-list *ngIf="linupDetails['home']['players']" >
+          <ion-item *ngFor="let player of linupDetails['home']['players']">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="1">
+                  <ion-text>{{player.shirtNumber}}</ion-text>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-img [src]="player.photo" class="player-img"></ion-img>
+                </ion-col>
+                <ion-col size="7">
+                  <ion-text>{{player.name}}</ion-text>
+                </ion-col>
+                <ion-col size="1">
+                  <ion-text>{{player.position}}</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+
+        <ion-row *ngIf="linupDetails['home']['subs']">
+          <ion-text class="info">Substitutes</ion-text>
+        </ion-row>
+        <ion-list *ngIf="linupDetails['home']['subs']" >
+          <ion-item *ngFor="let player of linupDetails['home']['subs']">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="1">
+                <ion-text>{{player.shirtNumber}}</ion-text>
+              </ion-col>
+              <ion-col size="3">
+                <ion-img [src]="player.photo" class="player-img"></ion-img>
+              </ion-col>
+              <ion-col size="7">
+                <ion-text>{{player.name}}</ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <ion-text>{{player.position}}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+      
+      <ion-row *ngIf="linupDetails['home']['missingPlayers']">
+        <ion-text class="info">Missing Players</ion-text>
+      </ion-row>
+      <ion-list *ngIf="linupDetails['home']['missingPlayers']" >
+        <ion-item *ngFor="let player of linupDetails['home']['missingPlayers']">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="1">
+                <ion-text>{{player.shirtNumber}}</ion-text>
+              </ion-col>
+              <ion-col size="3">
+                <ion-img [src]="player.photo" class="player-img"></ion-img>
+              </ion-col>
+              <ion-col size="7">
+                <ion-text>{{player.name}}</ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <ion-text>{{player.position}}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </div>
+    </ng-template>
+  </ion-toolbar>
+</ion-content>

@@ -1,4 +1,7 @@
+import { FixtureService } from './../../services/fixture.service';
 import { Component, OnInit } from '@angular/core';
+import { Fixture } from 'src/app/models/fixture';
+import { SharedFixtureService } from 'src/app/shared/shared-fixture.service';
 
 @Component({
   selector: 'app-fixture-linups',
@@ -7,8 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FixtureLinupsComponent implements OnInit {
 
-  constructor() { }
+  fixture: Fixture;
+  selectedTeam: string;
+  linupDetails: any;
+  constructor(private sharedFixture: SharedFixtureService, private fixtureService: FixtureService) {
+    this.fixture = sharedFixture.getData();
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.linupDetails = this.fixtureService.fetchLinups(this.fixture.id);
+  }
 
 }

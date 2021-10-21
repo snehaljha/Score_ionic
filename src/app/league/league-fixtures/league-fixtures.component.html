@@ -7,7 +7,7 @@
             <ion-text>{{fixture.getDate()}}</ion-text>
           </ion-row>
           <ion-row>
-            <ion-card class="match-card">
+            <ion-card class="match-card" (click)="gotoFixture(fixture)">
               <ion-grid>
               <ion-row>
                 <ion-col size=2>

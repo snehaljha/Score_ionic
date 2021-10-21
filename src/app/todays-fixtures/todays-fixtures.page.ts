@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Fixture } from '../models/fixture';
 import { League } from '../models/league';
 import { TodaysFixturesLoaderService } from '../services/todays-fixtures-loader.service';
+import { SharedFixtureService } from '../shared/shared-fixture.service';
 
 @Component({
   selector: 'app-todays-fixtures',
@@ -15,7 +16,7 @@ export class TodaysFixturesPage implements OnInit {
   fixtures: Array<Fixture>;
   private prevTitle: string;
 
-  constructor(private todaysFixturesLoader: TodaysFixturesLoaderService, private sharedLeague: SharedLeagueService, private router: Router) {
+  constructor(private todaysFixturesLoader: TodaysFixturesLoaderService, private sharedLeague: SharedLeagueService, private router: Router, private sharedFixture: SharedFixtureService) {
     this.prevTitle = '';
   }
 
@@ -33,5 +34,10 @@ export class TodaysFixturesPage implements OnInit {
   gotoLeague(league: League) {
     this.sharedLeague.setData(league);
     this.router.navigate(['league']);
+  }
+
+  gotoFixture(fixture: Fixture) {
+    this.sharedFixture.setData(fixture);
+    this.router.navigate(['fixture']);
   }
 }

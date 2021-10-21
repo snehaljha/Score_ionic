@@ -1,3 +1,4 @@
+import { Player } from 'src/app/models/player';
 import { FixtureScore } from './../models/fixture-score';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -36,5 +37,66 @@ export class FixtureService {
       }
     });
     return events;
+  }
+
+  fetchLinups(fixtureId: number) {
+    const url = Contants.matchLineups.replace('{fixture_id}', fixtureId.toString());
+    const linupDetails = new Map<any, any>();
+    this.http.get(url).subscribe(data => {
+      linupDetails['confirmation'] = data['confirmed']?'Confirmed Lineup':'Predicted Linup';
+      let parsed = data['home'];
+      const home = new Map<any, any>();
+      home['formation'] = parsed['formation'];
+      let players = new Array<Player>();
+      let subs = new Array<Player>();
+      let ind=0;
+      for(const i of parsed['players']) {
+        const player = new Player(i['player']);
+        player.shirtNumber = i['shirtNumber'];
+        if(ind++ < 11) {
+          players.push(player);
+        } else {
+          subs.push(player);
+        }
+      }
+      home['players'] = players;
+      home['subs'] = subs;      
+      players = new Array<Player>();
+      for(const i of parsed['missingPlayers']) {
+        const player = new Player(i['player']);
+        player.shirtNumber = i['shirtNumber'];
+        players.push(player);
+      }
+      home['missingPlayers'] = players;
+      linupDetails['home'] = home;
+
+
+      parsed = data['away'];
+      const away = new Map<any, any>();
+      away['formation'] = parsed['formation'];
+      players = new Array<Player>();
+      subs = new Array<Player>();
+      ind=0;
+      for(const i of parsed['players']) {
+        const player = new Player(i['player']);
+        player.shirtNumber = i['shirtNumber'];
+        if(ind++ < 11) {
+          players.push(player);
+        } else {
+          subs.push(player);
+        }
+      }
+      away['players'] = players;
+      away['subs'] = subs;
+      players = new Array<Player>();
+      for(const i of parsed['missingPlayers']) {
+        const player = new Player(i['player']);
+        player.shirtNumber = i['shirtNumber'];
+        players.push(player);
+      }
+      away['missingPlayers'] = players;
+      linupDetails['away'] = away;
+    });
+    return linupDetails;
   }
 }

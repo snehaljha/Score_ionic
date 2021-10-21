@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ActivationStart, Router, RouterOutlet } from '@angular/router';
 import { League } from 'src/app/models/league';
 import { Fixture } from 'src/app/models/fixture';
+import { SharedFixtureService } from 'src/app/shared/shared-fixture.service';
 
 @Component({
   selector: 'app-league-fixtures',
@@ -17,7 +18,7 @@ export class LeagueFixturesComponent implements OnInit {
   fixtures: Array<Fixture>;
   latestSeasonId: number;
   lastDate: string;
-  constructor(private sharedLeagueService: SharedLeagueService, private leagueService: LeagueService) {
+  constructor(private sharedLeagueService: SharedLeagueService, private leagueService: LeagueService, private sharedFixture: SharedFixtureService, private router: Router) {
     this.lastDate = '';
   }
   
@@ -37,5 +38,10 @@ export class LeagueFixturesComponent implements OnInit {
       return false;
     this.lastDate = date;
     return true;
+  }
+
+  gotoFixture(fixture: Fixture) {
+    this.sharedFixture.setData(fixture);
+    this.router.navigate(['fixture']);
   }
 }
