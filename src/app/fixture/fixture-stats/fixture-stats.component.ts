@@ -1,4 +1,7 @@
+import { FixtureService } from './../../services/fixture.service';
+import { Fixture } from './../../models/fixture';
 import { Component, OnInit } from '@angular/core';
+import { SharedFixtureService } from 'src/app/shared/shared-fixture.service';
 
 @Component({
   selector: 'app-fixture-stats',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FixtureStatsComponent implements OnInit {
 
-  constructor() { }
+  fixture: Fixture;
+  stats: any;
+  selection: string;
+  constructor(sharedFixture: SharedFixtureService, fixtureService: FixtureService) {
+    this.fixture = sharedFixture.getData();
+    this.stats = fixtureService.fetchStats(this.fixture.id);
+    this.selection = 'ALL';
+  }
 
   ngOnInit() {}
 

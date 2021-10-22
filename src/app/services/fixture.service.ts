@@ -99,4 +99,24 @@ export class FixtureService {
     });
     return linupDetails;
   }
+
+  fetchStats(fixtureId: number) {
+    const url = Contants.fixtureStat.replace('{fixture_id}', fixtureId.toString());
+    const stats = new Map();
+    this.http.get(url).subscribe(data => {
+      const parsed = data['statistics'];
+      for(const i of parsed) {
+        const vals = new Array();
+        for(const j of i['groups']) {
+          for(const k of j['statisticsItems']) {
+            vals.push({name: k['name'], home: k['home'], away: k['away'], winner: k['compareCode']});
+          }
+        }
+        console.log(i['period']);
+        console.log(vals);
+        stats[i['period']] = vals;
+      }
+    });
+    return stats;
+  }
 }
