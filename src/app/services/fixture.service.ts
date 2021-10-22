@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Contants } from '../models/contants';
 import { FixtureEvent } from '../models/fixture-event';
+import { Fixture } from '../models/fixture';
+import { League } from '../models/league';
 
 @Injectable({
   providedIn: 'root'
@@ -118,5 +120,55 @@ export class FixtureService {
       }
     });
     return stats;
+  }
+
+  fetchFacts(fixtureId: number) {
+    const url = Contants.otherStats.replace('{fixture_id}', fixtureId.toString());
+    const facts = new Map();
+    this.http.get(url).subscribe(data=> {
+      const parsed = data['general'];
+      const home = new Array();
+      const away = new Array();
+      for(const i of parsed) {
+        const stat = {name: i['name'], value: i['value']};
+        if(i['team'] == 'home') {
+          home.push(stat);
+        } else {
+          away.push(stat);
+        }
+      }
+      facts['home'] = home;
+      facts['away'] = away;
+    });
+    return facts;
+  }
+
+  fetchH2H(customId: string) {
+    const url = Contants.h2h.replace('{custom_id}', customId);
+    const res = Array<Fixture>();
+    this.http.get(url).subscribe(data => {
+      let parsed = data['events'];
+      for(const i of parsed) {
+        res.push(new Fixture(i, new League(i['tournament']['uniqueTournament'])));
+      }
+
+      res.sort((a: Fixture, b: Fixture) => {
+        if(a.startTimeStamp > b.startTimeStamp)
+          return -1;
+        if(a.startTimeStamp < b.startTimeStamp)
+          return 1;
+        if(a.homeTeam.userCount > b.homeTeam.userCount)
+          return -1;
+        if(a.homeTeam.userCount < b.homeTeam.userCount)
+          return 1;
+        return 0;
+      });
+    });
+    return res;
+  }
+
+  fetchRawCustomId(fixtureId: number) {
+    const url = Contants.fixtureInfo.replace('{fixture_id}', fixtureId.toString());
+    return this.http.get(url);
   }
 }
