@@ -38,7 +38,7 @@ export class FixtureEvent {
         if(this.type == 'card-red')
             return 'assets/images/red_card_icon.svg';
         if(this.type == 'card-yellowRed')
-            return 'assets/images/second_yellow_card-icon.svg';
+            return 'assets/images/second_yellow_card_icon.svg';
         if(this.type == 'substitution')
             return 'assets/images/substitution_icon.svg';
         if(this.type == 'card-yellow')
