@@ -7,7 +7,7 @@ export class FixtureScore {
 
     constructor(response) {
         this.current = response['current'];
-        this.display = response['current'];
+        this.display = response['display'];
         this.period1 = response['period1'];
         this.normalTime = response['normalTime'];
     }

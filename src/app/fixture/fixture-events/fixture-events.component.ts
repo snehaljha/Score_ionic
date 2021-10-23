@@ -34,7 +34,7 @@ export class FixtureEventsComponent implements OnInit {
   }  
 
   getScore(homeScore: FixtureScore, awayScore: FixtureScore) {
-    if(homeScore == undefined || awayScore == undefined || !homeScore.current || !awayScore.current)
+    if(homeScore == undefined || awayScore == undefined || homeScore.current == undefined || awayScore.current == undefined)
       return '-';
     return homeScore.current + ' - ' + awayScore.current;
   }
