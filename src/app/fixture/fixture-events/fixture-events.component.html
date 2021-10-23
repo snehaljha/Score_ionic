@@ -32,8 +32,10 @@
           <ng-template #away>
             <ion-row>
               <ion-col style="display: table-cell;">
-                <ion-text>{{event.primaryPlayer.name}}</ion-text>
-                <ion-text *ngIf="event.secondaryPlayer" >{{event.secondaryPlayer.name}}</ion-text>
+                <ion-text style="margin: 5px;">{{event.primaryPlayer.name}}</ion-text>
+                <div>
+                  <ion-text *ngIf="event.secondaryPlayer" >{{event.secondaryPlayer.name}}</ion-text>
+                </div>
               </ion-col>
               <ion-text style="margin: 5px;">{{event.time}}{{event.addedTime?('+'+event.addedTime):''}}</ion-text>
               <ion-img class="event-icon" [src]="event.icon"></ion-img>
