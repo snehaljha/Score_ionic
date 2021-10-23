@@ -1,9 +1,16 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Score</ion-title>
+          <ion-buttons slot="start">
+            <ion-back-button autoHide="false"></ion-back-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Score</ion-list-header>
           <ion-img src="assets/images/menu_img.jpg"></ion-img>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
