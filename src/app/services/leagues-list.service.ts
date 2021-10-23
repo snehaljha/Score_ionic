@@ -30,7 +30,6 @@ export class LeaguesListService {
         }
         return 0;
       });
-      console.log(leagues[0].logo);
     });
     return leagues;
   }

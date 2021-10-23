@@ -26,7 +26,6 @@ export class TopTeamsComponent implements OnInit {
 
   changeFav(team: Team, $event) {
     team.favourite = !team.favourite;
-    console.warn('fav called');
     $event.stopPropagation();
     if(team.favourite) {
       this.favouriteService.addTeam(team);

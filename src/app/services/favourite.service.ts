@@ -38,7 +38,6 @@ export class FavouriteService {
 
   sync() {
     this.nativeStorage.setItem('favourites', {'teams': this.favourites});
-    this.nativeStorage.getItem('favourites').then(data => {console.log(data['teams'] as Array<Team>)});
   }
 
   contains(team: Team) {

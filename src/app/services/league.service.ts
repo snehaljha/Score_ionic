@@ -65,7 +65,6 @@ export class LeagueService {
   private getStat(parsed, arg) {
     const res = new Map();
     res['player'] = new Player(parsed[0].player)
-    console.log(res['player']);
     if(arg === 'leastConceded') {
       arg = 'goalsConceded';
     }
@@ -109,7 +108,6 @@ export class LeagueService {
           return 1;
         return 0;
       });
-      console.log()
     });
     return res;
   }

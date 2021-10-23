@@ -43,8 +43,9 @@ export class FixtureEvent {
             return 'assets/images/substitution_icon.svg';
         if(this.type == 'card-yellow')
             return 'assets/images/yellow_card_icon.svg';
-        console.warn(this.type);
-        return '...';
+        if(this.type == 'goal-ownGoal')
+            return 'assets/images/own_goal_icon.svg';
+        return 'na';
     }
     
 }

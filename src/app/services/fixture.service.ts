@@ -114,8 +114,6 @@ export class FixtureService {
             vals.push({name: k['name'], home: k['home'], away: k['away'], winner: k['compareCode']});
           }
         }
-        console.log(i['period']);
-        console.log(vals);
         stats[i['period']] = vals;
       }
     });

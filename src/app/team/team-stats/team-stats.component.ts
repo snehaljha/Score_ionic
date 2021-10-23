@@ -33,7 +33,6 @@ export class TeamStatsComponent implements OnInit {
         item['category'] = new Category(i.uniqueTournament);
         item['seasons'] = new Array<Season>();
         for(const j of i['seasons']) {
-          console.log(j);
           item['seasons'].push(new Season(j));
         }
         this.statSeasons.push(item);
