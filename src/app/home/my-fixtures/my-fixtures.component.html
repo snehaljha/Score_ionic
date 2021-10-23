@@ -1,3 +1,72 @@
-<p>
-  my-fixtures works!
-</p>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let fixture of fixtures; let i=index">
+      <ion-grid>
+        <div *ngIf="isTitleNeeded(fixture.league.name, fixture.statusCode, i)">
+          <ion-row (click)="gotoLeague(fixture.league)" >
+            <ion-img [src]="fixture.league.logo" class="team-img"></ion-img>
+            <ion-text>
+              {{fixture.league.name}}
+            </ion-text>
+          </ion-row>
+        </div>
+        <div *ngIf="isDateNeeded(fixture.getDate())">
+          <ion-row style="margin: 10px;">
+            <ion-text>
+              {{fixture.getDate()}}
+            </ion-text>
+          </ion-row>
+        </div>
+        <ion-row>
+          <ion-card class="match-card" (click)="gotoFixture(fixture)" >
+            <ion-grid>
+              <ion-row>
+                <ion-col size=2>
+                  <ion-text>
+                    {{fixture.getTime()}}
+                  </ion-text>
+                </ion-col>
+                <ion-col size=2>
+                  <ion-img [src]="fixture.homeTeam.teamLogo" class="team-img"></ion-img>
+                </ion-col>
+                <ion-col size=6>
+                  <ion-text>
+                    {{fixture.homeTeam.name}}
+                  </ion-text>
+                </ion-col>
+                <ion-col *ngIf="fixture.isScoreNeeded()" >
+                  <ion-text>
+                    <div>
+                    {{fixture.homeScore.current}}
+                  </div>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+        <ion-row>
+          <ion-col [size]=2>
+            <ion-text>
+              {{fixture.getStatusMessage()}}
+            </ion-text>
+          </ion-col>
+          <ion-col [size]=2>
+            <ion-img [src]="fixture.awayTeam.teamLogo" class="team-img"></ion-img>
+          </ion-col>
+          <ion-col [size]=6>
+            <ion-text>
+              {{fixture.awayTeam.name}}
+            </ion-text>
+          </ion-col>
+          <ion-col *ngIf="fixture.isScoreNeeded()" >
+            <ion-text>
+              {{fixture.awayScore.current}}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </ion-row>
+  </ion-grid>
+</ion-item>
+
+</ion-list>
+</ion-content>

@@ -6,9 +6,14 @@
       </ion-col>
       <ion-col size="9">
         <ion-row style="margin-bottom: 10px">
-          <ion-title class="main-title">
-            {{team.name}}
-          </ion-title>
+          <ion-col>
+            <ion-title class="main-title">
+              {{team.name}}
+            </ion-title>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="heart" [ngClass]="team.favourite?'fav':'normal'" (click)="changeFav(team, $event)" ></ion-icon>
+          </ion-col>
         </ion-row>
         <ion-row style="align-items: center; justify-content: end; margin-right: 10px;">
             <ion-img class="stadium-img" src="assets/images/stadium.png"></ion-img>

@@ -1,8 +1,17 @@
 <ion-content>
   <ion-item *ngFor="let team of teams" (click)="gotoTeam(team)">
+    <ion-grid>
       <ion-row>
+        <ion-col size="2">
           <ion-img class="team-icon" [src]="team.teamLogo"></ion-img>
+        </ion-col>
+        <ion-col size="8">
           <ion-text>{{team.name}}</ion-text>
+        </ion-col>
+        <ion-col size="2">
+          <ion-icon name="heart" [ngClass]="team.favourite?'fav':'normal'" (click)="changeFav(team, $event)"></ion-icon>
+        </ion-col>
       </ion-row>
+    </ion-grid>
   </ion-item>
 </ion-content>

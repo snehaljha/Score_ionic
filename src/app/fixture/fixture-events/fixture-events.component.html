@@ -3,14 +3,14 @@
     <ion-row>
       <ion-col size="4">
         <ion-img class="team-logo" [src]="fixture.homeTeam.teamLogo"></ion-img>
-        <ion-title class="team-name">{{fixture.homeTeam.name}}</ion-title>
+        <ion-icon name="heart" [ngClass]="fixture.homeTeam.favourite?'fav':'normal'" (click)="changeFav(fixture.homeTeam, $event)" ></ion-icon>
       </ion-col>
       <ion-col size="4">
         <ion-title class="team-name">{{getScore(info['homeScore'], info['awayScore'])}}</ion-title>
       </ion-col>
       <ion-col size="4">
         <ion-img class="team-logo" [src]="fixture.awayTeam.teamLogo"></ion-img>
-        <ion-title class="team-name">{{fixture.awayTeam.name}}</ion-title>
+        <ion-icon name="heart" [ngClass]="fixture.awayTeam.favourite?'fav':'normal'" (click)="changeFav(fixture.awayTeam, $event)" ></ion-icon>
       </ion-col>
     </ion-row>
   </ion-card>
