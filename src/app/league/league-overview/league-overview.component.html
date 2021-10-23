@@ -41,7 +41,7 @@
               <ion-text class="card-text ion-text-center">Most Goals</ion-text>
             </ion-row>
             <ion-row>
-              <ion-img class="card-img" [src]="stats['goals']['player'].photo"></ion-img>
+              <img class="card-img" [src]="stats['goals']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
             </ion-row>
             <ion-row>
               <ion-text class="card-text ion-text-center">{{stats['goals']['player'].name}}</ion-text>
@@ -57,7 +57,7 @@
             <ion-text class="card-text ion-text-center">Most Assists</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['assists']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['assists']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['assists']['player'].name}}</ion-text>
@@ -75,7 +75,7 @@
             <ion-text class="card-text ion-text-center">Most Goals+Assists</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['goalsassists']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['goalsassists']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['goalsassists']['player'].name}}</ion-text>
@@ -91,7 +91,7 @@
             <ion-text class="card-text ion-text-center">Most Key Passes</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['keyPasses']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['keyPasses']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['keyPasses']['player'].name}}</ion-text>
@@ -109,7 +109,7 @@
             <ion-text class="card-text ion-text-center">Most Accurate Passes</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['accuratePasses']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['accuratePasses']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['accuratePasses']['player'].name}}</ion-text>
@@ -125,7 +125,7 @@
             <ion-text class="card-text ion-text-center">Most Successful Dribbles</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['successfulDribbles']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['successfulDribbles']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['successfulDribbles']['player'].name}}</ion-text>
@@ -143,7 +143,7 @@
             <ion-text class="card-text ion-text-center">Most Interceptions</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['interceptions']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['interceptions']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['interceptions']['player'].name}}</ion-text>
@@ -159,7 +159,7 @@
             <ion-text class="card-text ion-text-center">Most Tackles</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['tackles']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['tackles']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['tackles']['player'].name}}</ion-text>
@@ -177,7 +177,7 @@
             <ion-text class="card-text ion-text-center">Most Clearences</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['clearances']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['clearances']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['clearances']['player'].name}}</ion-text>
@@ -193,7 +193,7 @@
             <ion-text class="card-text ion-text-center">Most Saves</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['saves']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['saves']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['saves']['player'].name}}</ion-text>
@@ -211,7 +211,7 @@
             <ion-text class="card-text ion-text-center">Most Clean Sheets</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['cleanSheet']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['cleanSheet']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['cleanSheet']['player'].name}}</ion-text>
@@ -227,7 +227,7 @@
             <ion-text class="card-text ion-text-center">Least Conceded</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['leastConceded']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['leastConceded']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['leastConceded']['player'].name}}</ion-text>
@@ -245,7 +245,7 @@
             <ion-text class="card-text ion-text-center">Most Yellow Cards</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['yellowCards']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['yellowCards']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['yellowCards']['player'].name}}</ion-text>
@@ -261,7 +261,7 @@
             <ion-text class="card-text ion-text-center">Most Red Cards</ion-text>
           </ion-row>
           <ion-row>
-            <ion-img class="card-img" [src]="stats['redCards']['player'].photo"></ion-img>
+            <img class="card-img" [src]="stats['redCards']['player'].photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'">
           </ion-row>
           <ion-row>
             <ion-text class="card-text ion-text-center">{{stats['redCards']['player'].name}}</ion-text>

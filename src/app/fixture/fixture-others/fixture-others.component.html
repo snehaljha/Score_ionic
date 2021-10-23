@@ -36,6 +36,11 @@
   <ion-list>
     <ion-item *ngFor="let fixture of h2hfixtures">
       <ion-grid>
+        <ion-row>
+          <ion-text>
+            {{fixture.getDate()}}
+          </ion-text>
+        </ion-row>
         <div *ngIf="isTitleNeeded(fixture.league.name)">
           <ion-row (click)="gotoLeague(fixture.league)" >
             <ion-img [src]="fixture.league.logo" class="team-img"></ion-img>
@@ -45,7 +50,7 @@
           </ion-row>
         </div>
         <ion-row>
-          <ion-card class="match-card" (click)="gotoFixture(fixture)" >
+          <ion-card class="match-card" >
             <ion-grid>
               <ion-row>
                 <ion-col size=2>

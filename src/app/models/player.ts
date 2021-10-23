@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Contants } from "./contants";
 
 export class Player {
@@ -9,7 +10,7 @@ export class Player {
     id: number;
     photo: string;
     preferredFoot: string;
-    shirtNumber: number;
+    shirtNumber: any;
 
     constructor(parsed) {
         this.name = parsed.name;
@@ -21,6 +22,8 @@ export class Player {
         this.photo = Contants.playerPhoto.replace('{player_id}', this.id.toString());
         this.preferredFoot = parsed.preferredFoot;
         this.shirtNumber = parsed.shirtNumber;
+        if(!this.shirtNumber)
+            this.shirtNumber = 'NA';
     }
 
     makeCoach() {

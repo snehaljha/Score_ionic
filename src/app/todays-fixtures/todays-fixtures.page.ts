@@ -15,9 +15,11 @@ export class TodaysFixturesPage implements OnInit {
   
   fixtures: Array<Fixture>;
   private prevTitle: string;
+  private prevDate: string;
 
   constructor(private todaysFixturesLoader: TodaysFixturesLoaderService, private sharedLeague: SharedLeagueService, private router: Router, private sharedFixture: SharedFixtureService) {
     this.prevTitle = '';
+    this.prevDate = '';
   }
 
   ngOnInit() {
@@ -28,6 +30,14 @@ export class TodaysFixturesPage implements OnInit {
     if(title === this.prevTitle)
       {return false;}
     this.prevTitle = title;
+    return true;
+  }
+
+  isDateNeeded(date: string) {
+    if(date == this.prevDate)
+      return false;
+    this.prevDate = date;
+    this.prevDate = '';
     return true;
   }
 

@@ -2,8 +2,13 @@
   <ion-list>
     <ion-item *ngFor="let fixture of fixtures; let i=index">
       <ion-grid>
+        <ion-row>
+          <ion-text style="margin: 5px;">
+            {{fixture.getDate()}}
+          </ion-text>
+        </ion-row>
         <div *ngIf="isTitleNeeded(fixture.league.name, fixture.statusCode, i)" [id]="'item-' + i">
-          <ion-row>
+          <ion-row (click)="gotoLeague(fixture.league)" >
             <ion-img [src]="fixture.league.logo" class="team-img"></ion-img>
             <ion-text>
               {{fixture.league.name}}

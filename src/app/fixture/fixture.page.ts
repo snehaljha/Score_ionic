@@ -21,6 +21,27 @@ export class FixturePage implements OnInit {
   }
 
   ngOnInit() {
+    console.warn('oninit');
+  }
+
+  ionViewWillEnter(){
+    console.warn('view will enter');
+  }
+
+  ionViewDidLoad(){
+    console.warn('view did load');
+  }
+
+  ionViewWillUnload(){
+   console.warn('view will unload');
+  }
+
+  ionViewWillLeave(){
+    console.warn('view will leave');
+  }
+
+  ngOnDestroy() {
+    console.warn('destroye');
   }
 
 }

@@ -82,15 +82,18 @@ export class LeagueService {
     const res = Array<Fixture>();
     this.http.get(url).subscribe(data => {
       let parsed = data['tournamentTeamEvents'];
-      parsed = parsed[Object.keys(parsed)[0]];
-      const subKeys = Object.keys(parsed);
-      const ids = new Set();
-      for(const k of subKeys) {
-        for(const i of parsed[k]) {
-          const fixture = new Fixture(i, new League(i['tournament']['uniqueTournament']));
-          if(!ids.has(fixture.id)) {
-            ids.add(fixture.id);
-            res.push(fixture);
+      const powerKeys = Object.keys(parsed);
+      for(const pk of powerKeys) {
+        const parser = parsed[pk];
+        const subKeys = Object.keys(parser);
+        const ids = new Set();
+        for(const k of subKeys) {
+          for(const i of parser[k]) {
+            const fixture = new Fixture(i, new League(i['tournament']['uniqueTournament']));
+            if(!ids.has(fixture.id)) {
+              ids.add(fixture.id);
+              res.push(fixture);
+            }
           }
         }
       }

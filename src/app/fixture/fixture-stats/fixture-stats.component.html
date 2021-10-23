@@ -25,7 +25,7 @@
         <ion-img [src]="fixture.awayTeam.teamLogo" class="team-img"></ion-img>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="selection == 'all' && stats['ALL']" >
+    <ion-row *ngIf="selection != '1ST' && selection != '2ND' && stats['ALL']" >
       <ion-list style="width: 100%;">
         <ion-item *ngFor="let item of stats['ALL']">
           <ion-grid>

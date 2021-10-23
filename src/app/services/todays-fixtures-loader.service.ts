@@ -38,6 +38,10 @@ export class TodaysFixturesLoaderService {
         }
       }
       fixtures.sort((a: Fixture, b: Fixture) => {
+        if(a.league.userCount > b.league.userCount)
+          return -1;
+        if(a.league.userCount < b.league.userCount)
+          return 1;
         if(a.startTimeStamp < b.startTimeStamp)
           {return -1;}
         if(a.startTimeStamp > b.startTimeStamp)

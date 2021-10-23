@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PickerController, PickerOptions } from '@ionic/angular';
+import { Contants } from 'src/app/models/contants';
 import { League } from 'src/app/models/league';
 import { Season } from 'src/app/models/season';
 import { LeagueService } from 'src/app/services/league.service';
@@ -19,6 +20,7 @@ export class LeagueOverviewComponent implements OnInit {
   selectedSeason: Season;
   selectedLabel: string;
   stats: any;
+  emptyPlayerPhoto: string;
   constructor(sharedLeagueService: SharedLeagueService, private leagueService: LeagueService, private pickerController: PickerController) {
     this.league = sharedLeagueService.getData();
     this.champs = this.leagueService.fetchChamps(this.league.id);
@@ -33,6 +35,7 @@ export class LeagueOverviewComponent implements OnInit {
       this.selectedLabel = this.selectedSeason.year;
       this.stats = leagueService.fetchStats(this.league.id, this.selectedSeason.id);
     });
+    this.emptyPlayerPhoto = Contants.emptyPlayerPhoto;
   }
 
   async ngOnInit() {

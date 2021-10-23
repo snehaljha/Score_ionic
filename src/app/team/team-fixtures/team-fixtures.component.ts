@@ -1,3 +1,4 @@
+import { SharedLeagueService } from 'src/app/shared/shared-league.service';
 import { TeamService } from './../../services/team.service';
 import { SharedTeamService } from './../../shared/shared-team.service';
 import { Component, OnInit } from '@angular/core';
@@ -5,6 +6,7 @@ import { Fixture } from 'src/app/models/fixture';
 import { Team } from 'src/app/models/team';
 import { SharedFixtureService } from 'src/app/shared/shared-fixture.service';
 import { Router } from '@angular/router';
+import { League } from 'src/app/models/league';
 
 @Component({
   selector: 'app-team-fixtures',
@@ -17,7 +19,8 @@ export class TeamFixturesComponent implements OnInit {
   fixtures: Array<Fixture>;
   private prevTitle: string;
 
-  constructor(private sharedTeam: SharedTeamService, teamService: TeamService, private sharedFixture: SharedFixtureService, private router: Router) {
+  constructor(private sharedTeam: SharedTeamService, teamService: TeamService, private sharedFixture: SharedFixtureService,
+    private router: Router, private sharedLeague: SharedLeagueService) {
     this.team = sharedTeam.getData();
     this.fixtures = teamService.fetchFixtures(this.team.id);
     this.prevTitle = '';
@@ -35,6 +38,11 @@ export class TeamFixturesComponent implements OnInit {
   gotoFixture(fixture: Fixture) {
     this.sharedFixture.setData(fixture);
     this.router.navigate(['fixture']);
+  }
+
+  gotoLeague(league: League) {
+    this.sharedLeague.setData(league);
+    this.router.navigate(['league']);
   }
 
 }

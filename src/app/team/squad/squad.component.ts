@@ -3,6 +3,7 @@ import { SharedTeamService } from './../../shared/shared-team.service';
 import { Team } from './../../models/team';
 import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/app/models/player';
+import { Contants } from 'src/app/models/contants';
 
 @Component({
   selector: 'app-squad',
@@ -14,11 +15,13 @@ export class SquadComponent implements OnInit {
   basicInfo: any;
   squad: Array<Player>;
   team: Team;
+  emptyPlayerPhoto: string;
 
-  constructor(sharedTeam: SharedTeamService, teamService: TeamService) {
+  constructor(sharedTeam: SharedTeamService, public teamService: TeamService) {
     this.team = sharedTeam.getData();
     this.basicInfo = teamService.fetchBasicInfo(this.team.id);
     this.squad = teamService.fetchSquad(this.team.id);
+    this.emptyPlayerPhoto = Contants.emptyPlayerPhoto;
   }
 
   ngOnInit() {}

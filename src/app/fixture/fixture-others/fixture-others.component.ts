@@ -44,9 +44,5 @@ export class FixtureOthersComponent implements OnInit {
     this.router.navigate(['league']);
   }
 
-  gotoFixture(fixture: Fixture) {
-    this.sharedFixture.setData(fixture);
-    this.router.navigate(['fixture']);
-  }
 
 }

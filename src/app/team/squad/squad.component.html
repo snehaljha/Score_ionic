@@ -21,8 +21,9 @@
     <ion-item *ngIf="basicInfo && basicInfo.manager">
       <ion-grid>
         <ion-row>
-            <ion-img [src]="basicInfo.manager.photo" class="player-photo" style="margin-right: 10px;"></ion-img>
-            <ion-text>Coach</ion-text>
+            <img [src]="basicInfo.manager.photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'" class="player-photo" style="margin-right: 10px;">
+            <ion-text>{{basicInfo.manager.name}}</ion-text>
+            <ion-text style="margin-left: 5px;"> - Coach</ion-text>
         </ion-row>
       </ion-grid>
       </ion-item>
@@ -32,7 +33,7 @@
           <ion-row>
             <ion-col size="1">{{player.shirtNumber}}</ion-col>
             <ion-col size="2">
-              <ion-img [src]="player.photo" class="player-photo"></ion-img>
+              <img [src]="player.photo" onerror="this.onerror=null;this.src='https://www.sofascore.com/static/images/placeholders/player.png'" class="player-photo">
             </ion-col>
             <ion-col size="6">{{player.name}}</ion-col>
             <ion-col size="1">{{player.position}}</ion-col>

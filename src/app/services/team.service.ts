@@ -67,19 +67,19 @@ export class TeamService {
       for(const i of parsed) {
         fixtures.push(new Fixture(i, new League(i['tournament']['uniqueTournament'])));
       }
-    });
-    url = Contants.teamNextMatches.replace('{team_id}', teamId.toString());
-    this.http.get(url).subscribe(data => {
-      const parsed = data['events'];
-      for(const i of parsed) {
-        fixtures.push(new Fixture(i, new League(i['tournament']['uniqueTournament'])));
-      }
-      fixtures.sort((a: Fixture, b: Fixture) => {
-        if(a.startTimeStamp < b.startTimeStamp)
-          return -1;
-        if(a.startTimeStamp > b.startTimeStamp)
-          return 1;
-        return 0;
+      url = Contants.teamNextMatches.replace('{team_id}', teamId.toString());
+      this.http.get(url).subscribe(data => {
+        const parsed = data['events'];
+        for(const i of parsed) {
+          fixtures.push(new Fixture(i, new League(i['tournament']['uniqueTournament'])));
+        }
+        fixtures.sort((a: Fixture, b: Fixture) => {
+          if(a.startTimeStamp < b.startTimeStamp)
+            return -1;
+          if(a.startTimeStamp > b.startTimeStamp)
+            return 1;
+          return 0;
+        });
       });
     });
     return fixtures;
@@ -104,6 +104,20 @@ export class TeamService {
           continue;
         res.push({name: i, value: parsed[i]});
       }
+    });
+    return res;
+  }
+
+  getPhoto(player: Player) {
+    let url: string;
+    if(player.position == 'Coach')
+      url = Contants.managerPhoto.replace('{player_id}', player.id.toString());
+    else
+      url = Contants.playerPhoto.replace('{player_id}', player.id.toString());
+    
+    let res: any;
+    this.http.get(url).subscribe(data => {res = data}, error => {
+      this.http.get(Contants.emptyPlayerPhoto).subscribe(data => {res = data});
     });
     return res;
   }

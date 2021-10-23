@@ -22,7 +22,12 @@ export class FixtureEventsComponent implements OnInit {
     this.events = fixtureService.fetchEvents(this.fixture.id);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  ionViewWillEnter(){
+   
+  }  
 
   getScore(homeScore: FixtureScore, awayScore: FixtureScore) {
     if(homeScore == undefined || awayScore == undefined)
