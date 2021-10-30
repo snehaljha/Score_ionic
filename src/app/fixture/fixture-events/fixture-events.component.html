@@ -6,7 +6,12 @@
         <ion-icon name="heart" [ngClass]="fixture.homeTeam.favourite?'fav':'normal'" (click)="changeFav(fixture.homeTeam, $event)" ></ion-icon>
       </ion-col>
       <ion-col size="4">
-        <ion-title class="team-name">{{getScore(info['homeScore'], info['awayScore'])}}</ion-title>
+        <ion-row>
+          <ion-title class="team-name">{{getScore(info['homeScore'], info['awayScore'])}}</ion-title>
+        </ion-row>
+        <ion-row>
+          <ion-text class="team-name">{{fixture.getStatusMessage()}}</ion-text>
+        </ion-row>
       </ion-col>
       <ion-col size="4">
         <ion-img class="team-logo" [src]="fixture.awayTeam.teamLogo"></ion-img>

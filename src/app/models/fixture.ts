@@ -13,6 +13,8 @@ export class Fixture {
     awayScore: FixtureScore;
     id: number;
     startTimeStamp: number;
+    offset: number;
+    periodStartTimeStamp: number;
 
     constructor(response, league: League) {
         this.league = league;
@@ -21,6 +23,9 @@ export class Fixture {
         this.awayTeam = new Team(response['awayTeam']);
         this.id = response['id'];
         this.startTimeStamp = response['startTimestamp'];
+        this.offset = response['time']['initial'];
+        this.offset /= 60;
+        this.periodStartTimeStamp = response['time']['currentPeriodStartTimestamp'];
         if(this.isScoreNeeded())
             this.homeScore = new FixtureScore(response['homeScore']);
         if(response.awayScore != null)
@@ -38,7 +43,11 @@ export class Fixture {
     }
 
     getStatusMessage() {
-        return Contants.statusMSG[this.statusCode];
+        if(this.statusCode == 6 || this.statusCode == 7)
+            return this.getInFixtureTime();
+        if(Contants.statusMSG[this.statusCode])
+            return Contants.statusMSG[this.statusCode];
+        return '#' + this.statusCode.toString();
     }
 
     getDate() {
@@ -54,5 +63,12 @@ export class Fixture {
         let hh = String(date.getHours()).padStart(2,'0');
         let mm = String(date.getMinutes()).padStart(2, '0');
         return hh+':'+mm;
+    }
+
+    getInFixtureTime() {
+        let currentTimeStamp: number = Math.floor(Date.now()/1000);
+        let diff = (currentTimeStamp-this.periodStartTimeStamp)/60;
+        console.warn(this.periodStartTimeStamp);
+        return (this.offset + diff).toFixed() + '\'';
     }
 }
