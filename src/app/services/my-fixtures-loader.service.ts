@@ -39,6 +39,7 @@ export class MyFixturesLoaderService {
       {return this.map.get(this.date);}
     const response = this.http.get(Contants.fixtureByDate.replace('yyyy-mm-dd', this.date));
     const fixtures = new Array<Fixture>();
+    const set = new Set();
     response.subscribe(data => {
       const newLocal = 'events';
       const parsed = data[newLocal];
@@ -49,8 +50,10 @@ export class MyFixturesLoaderService {
         } else {
           fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
         }
-        if(this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam))
+        if((this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam)) && !set.has(fixture.id)) {
+          set.add(fixture.id);
           fixtures.push(fixture);
+        }
       }
 
       const url = Contants.fixtureByDate.replace('yyyy-mm-dd', this.yesterday)
@@ -64,8 +67,10 @@ export class MyFixturesLoaderService {
           } else {
             fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
           }
-          if(this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam))
+          if((this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam)) && !set.has(fixture.id)) {
+            set.add(fixture.id);
             fixtures.push(fixture);
+          }
         }
 
         const url = Contants.fixtureByDate.replace('yyyy-mm-dd', this.tomorrow)
@@ -79,8 +84,10 @@ export class MyFixturesLoaderService {
             } else {
               fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
             }
-            if(this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam))
+            if((this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam)) && !set.has(fixture.id)) {
+              set.add(fixture.id);
               fixtures.push(fixture);
+            }
           }          
           fixtures.sort((a: Fixture, b: Fixture) => {
             if(a.league.userCount > b.league.userCount)
