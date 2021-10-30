@@ -35,7 +35,9 @@ export class FixtureService {
     this.http.get(url).subscribe(data => {
       const parsed = data['incidents'];
       for(const i of parsed) {
-        events.push(new FixtureEvent(i));
+        let event  = new FixtureEvent(i);
+        if(event.isHome == undefined || event.icon != 'na')
+          events.push(event);
       }
     });
     return events;

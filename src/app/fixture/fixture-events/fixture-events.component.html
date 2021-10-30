@@ -17,8 +17,8 @@
 
   <ion-list *ngIf="events" >
     <ion-item *ngFor="let event of events">
-      <ion-row *ngIf="event.icon && event.icon != 'na'"  [ngClass]="event.isHome==true?'':(event.isHome == false?'away':'middle')" >
-        <span *ngIf="event.isHome != undefined; else bothEvent" >
+      <ion-row [ngClass]="event.isHome==true?'':(event.isHome == false?'away':'middle')">
+        <span *ngIf="event.isHome != undefined; else bothEvent">
           <span *ngIf="event.isHome; else away">
             <ion-img [src]="event.icon" class="event-icon"></ion-img>
             <ion-text>{{event.time}}{{event.addedTime?('+'+event.addedTime):''}}</ion-text>
