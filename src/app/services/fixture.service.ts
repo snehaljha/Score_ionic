@@ -21,7 +21,8 @@ export class FixtureService {
       const parsed = data['event'];
       res['venue'] = parsed['venue']['stadium']['name'] + ' - ' + parsed['venue']['city']['name'];
       res['customId'] = parsed['customId'];
-      res['refree'] = parsed['referee']['name'];
+      if(parsed['referee'] && parsed['referee']['name'])
+        res['refree'] = parsed['referee']['name'];
       res['isStats'] = parsed['hasEventPlayerStatistics']?parsed['hasEventPlayerStatistics']:false;
       res['homeScore'] = new FixtureScore(parsed['homeScore']);
       res['awayScore'] = new FixtureScore(parsed['awayScore']);
@@ -31,16 +32,33 @@ export class FixtureService {
 
   fetchEvents(fixtureId: number) {
     const url = Contants.fixtureEvents.replace('{fixture_id}', fixtureId.toString());
+    const res = new Map();
     const events = new Array<FixtureEvent>();
     this.http.get(url).subscribe(data => {
       const parsed = data['incidents'];
+      let hScore;
+      let aScore;
+      let isLive: boolean;
       for(const i of parsed) {
         let event  = new FixtureEvent(i);
-        if(event.isHome == undefined || event.icon != 'na')
+        if(hScore == undefined) {
+          hScore = i['homeScore'];
+          aScore = i['awayScore'];
+          if(i['isLive'] != undefined)
+            isLive = i['isLive'];
+          else
+            isLive = true;
+        }
+        if(event.isHome == undefined || event.icon != 'na') {
           events.push(event);
+        }
       }
+      res['hs'] = hScore;
+      res['as'] = aScore;
+      res['events'] = events;
+      res['isLive'] = isLive;
     });
-    return events;
+    return res;
   }
 
   fetchLinups(fixtureId: number) {

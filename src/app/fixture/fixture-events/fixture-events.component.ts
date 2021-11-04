@@ -16,27 +16,58 @@ export class FixtureEventsComponent implements OnInit {
 
   fixture: Fixture;
   info: Map<any, any>;
-  events: Array<FixtureEvent>;
+  eventDetails: Map<any, any>;
+  time: string;
+  thread: any;
+  firstFetch: boolean;
 
   constructor(private sharedFixture: SharedFixtureService, private fixtureService: FixtureService, private favouriteService: FavouriteService) {
     this.fixture = sharedFixture.getData();
+    this.firstFetch = true;
     this.fixture.homeTeam.favourite = favouriteService.contains(this.fixture.homeTeam);
     this.fixture.awayTeam.favourite = favouriteService.contains(this.fixture.awayTeam);
     this.info = fixtureService.fetchInfo(this.fixture.id);
-    this.events = fixtureService.fetchEvents(this.fixture.id);
   }
 
   ngOnInit() {
   }
 
   ionViewWillEnter(){
-   
-  }  
+    this.refreshDetails();
+    this.thread = setInterval(() => {this.refreshDetails();}, 15000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.thread);
+    console.log('destroyed');
+  }
+
+  // private calcTime() {
+  //   if(this.fixture && this.fixture.periodStartTimeStamp && this.fixture.offset && this.fixture.maxTime) {
+  //     let currentTimeStamp: number = Math.floor(Date.now()/1000);
+  //     let diff = (currentTimeStamp-this.fixture.periodStartTimeStamp)/60;
+  //     let res = Number((this.fixture.offset + diff).toFixed());
+  //     if(res > this.fixture.maxTime) {
+  //         return this.fixture.maxTime.toString() + '+' + (res-this.fixture.maxTime).toString() + '\'';
+  //     }
+  //     return res.toString() + '\'';
+  //   }
+  //   return "";
+  // }
+
+  private refreshDetails() {
+    if(this.firstFetch || this.eventDetails['isLive']) {
+      this.firstFetch = false;
+      this.eventDetails = this.fixtureService.fetchEvents(this.fixture.id);
+      this.time = this.fixture.getStatusMessage();
+    }
+    console.info('refreshed');
+  }
 
   getScore(homeScore: FixtureScore, awayScore: FixtureScore) {
-    if(homeScore == undefined || awayScore == undefined || homeScore.current == undefined || awayScore.current == undefined)
+    if(homeScore == undefined || awayScore == undefined)
       return '-';
-    return homeScore.current + ' - ' + awayScore.current;
+    return homeScore + ' - ' + awayScore;
   }
 
   changeFav(team: Team, $event) {

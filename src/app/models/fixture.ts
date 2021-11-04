@@ -15,6 +15,7 @@ export class Fixture {
     startTimeStamp: number;
     offset: number;
     periodStartTimeStamp: number;
+    maxTime: number;
 
     constructor(response, league: League) {
         this.league = league;
@@ -23,9 +24,13 @@ export class Fixture {
         this.awayTeam = new Team(response['awayTeam']);
         this.id = response['id'];
         this.startTimeStamp = response['startTimestamp'];
-        this.offset = response['time']['initial'];
-        this.offset /= 60;
-        this.periodStartTimeStamp = response['time']['currentPeriodStartTimestamp'];
+        if(response['time']) {
+            this.offset = response['time']['initial'];
+            this.offset /= 60;
+            this.periodStartTimeStamp = response['time']['currentPeriodStartTimestamp'];
+            this.maxTime = response['time']['max'];
+            this.maxTime /= 60;
+        }
         if(this.isScoreNeeded())
             this.homeScore = new FixtureScore(response['homeScore']);
         if(response.awayScore != null)
@@ -43,7 +48,7 @@ export class Fixture {
     }
 
     getStatusMessage() {
-        if(this.statusCode == 6 || this.statusCode == 7)
+        if((this.statusCode == 6 || this.statusCode == 7) && this.periodStartTimeStamp && this.offset != null)
             return this.getInFixtureTime();
         if(Contants.statusMSG[this.statusCode])
             return Contants.statusMSG[this.statusCode];
@@ -68,7 +73,10 @@ export class Fixture {
     getInFixtureTime() {
         let currentTimeStamp: number = Math.floor(Date.now()/1000);
         let diff = (currentTimeStamp-this.periodStartTimeStamp)/60;
-        console.warn(this.periodStartTimeStamp);
-        return (this.offset + diff).toFixed() + '\'';
+        let res = Number((this.offset + diff).toFixed());
+        if(res > this.maxTime) {
+            return this.maxTime.toString() + '+' + (res-this.maxTime).toString() + '\'';
+        }
+        return res.toString() + '\'';
     }
 }

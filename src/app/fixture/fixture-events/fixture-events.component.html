@@ -1,5 +1,5 @@
 <ion-content>
-  <ion-card class="main-card" *ngIf="fixture" >
+  <ion-card class="main-card" *ngIf="fixture && eventDetails" >
     <ion-row>
       <ion-col size="4">
         <ion-img class="team-logo" [src]="fixture.homeTeam.teamLogo"></ion-img>
@@ -7,7 +7,7 @@
       </ion-col>
       <ion-col size="4">
         <ion-row>
-          <ion-title class="team-name">{{getScore(info['homeScore'], info['awayScore'])}}</ion-title>
+          <ion-title class="team-name">{{getScore(eventDetails['hs'], eventDetails['as'])}}</ion-title>
         </ion-row>
         <ion-row>
           <ion-text class="team-name">{{fixture.getStatusMessage()}}</ion-text>
@@ -20,8 +20,8 @@
     </ion-row>
   </ion-card>
 
-  <ion-list *ngIf="events" >
-    <ion-item *ngFor="let event of events">
+  <ion-list *ngIf="eventDetails && eventDetails['events']" >
+    <ion-item *ngFor="let event of eventDetails['events']">
       <ion-row [ngClass]="event.isHome==true?'':(event.isHome == false?'away':'middle')">
         <span *ngIf="event.isHome != undefined; else bothEvent">
           <span *ngIf="event.isHome; else away">
@@ -56,7 +56,7 @@
 
   <ion-card>
     <ion-grid>
-      <ion-row>
+      <ion-row *ngIf="info['refree']" >
         <ion-col size="3">
           <ion-img class="card-icon" src="assets/images/whistle.svg"></ion-img>
         </ion-col>
