@@ -13,10 +13,14 @@ export class FixtureEvent {
 
     constructor(parsed) {
         this.time = parsed.time;
-        this.addedTime = parsed.addedTime;
-        this.isHome = parsed.isHome;
-        this.type = parsed.incidentType + (parsed.incidentClass?('-'+parsed.incidentClass):'');
-        this.msg = parsed.text;
+        if(parsed.length)
+            this.addedTime = parsed.length;
+        if(parsed.isHome != undefined)
+            this.isHome = parsed.isHome;
+        if(parsed.incidentType)
+            this.type = parsed.incidentType + (parsed.incidentClass?('-'+parsed.incidentClass):'');
+        if(parsed.text)
+            this.msg = parsed.text;
         if(parsed.playerIn)
             this.primaryPlayer = new Player(parsed.playerIn);
         else if(parsed.player)
@@ -26,6 +30,8 @@ export class FixtureEvent {
         else if(parsed.assist1)
             this.secondaryPlayer = new Player(parsed.assist1);
         this.icon = this.getIcon();
+        if(this.type == 'injuryTime')
+            this.msg = 'Added Time +' + this.addedTime.toString() + '\'';
     }
 
     private getIcon() {
@@ -45,6 +51,9 @@ export class FixtureEvent {
             return 'assets/images/yellow_card_icon.svg';
         if(this.type == 'goal-ownGoal')
             return 'assets/images/own_goal_icon.svg';
+        if(this.type == 'substitution-injury')
+            return 'assets/images/substitution_injury.svg';
+        console.warn(this);
         return 'na';
     }
     
