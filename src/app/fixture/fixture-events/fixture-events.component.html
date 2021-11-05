@@ -54,7 +54,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-card>
+  <ion-card *ngIf="info && (info['refree'] || info['venue'])" >
     <ion-grid>
       <ion-row *ngIf="info['refree']" >
         <ion-col size="3">
@@ -64,7 +64,7 @@
           <ion-text>{{info['refree']}}</ion-text>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="info['venue']" >
         <ion-col size="3">
           <ion-img class="card-icon" src="assets/images/stadium.png"></ion-img>
         </ion-col>

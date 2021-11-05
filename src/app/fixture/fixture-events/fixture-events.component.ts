@@ -30,15 +30,17 @@ export class FixtureEventsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refreshDetails();
+    if(this.thread == undefined)
+      this.thread = setInterval(() => {this.refreshDetails();}, 15000);
   }
 
   ionViewWillEnter(){
-    this.refreshDetails();
-    this.thread = setInterval(() => {this.refreshDetails();}, 15000);
   }
 
   ngOnDestroy() {
     clearInterval(this.thread);
+    this.thread = undefined;
     console.log('destroyed');
   }
 

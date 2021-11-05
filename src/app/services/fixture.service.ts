@@ -19,14 +19,19 @@ export class FixtureService {
     const res = new Map();
     this.http.get(url).subscribe(data => {
       const parsed = data['event'];
-      res['venue'] = parsed['venue']['stadium']['name'] + ' - ' + parsed['venue']['city']['name'];
-      res['customId'] = parsed['customId'];
+      if(!parsed) return;
+      if(parsed['venue'] && parsed['venue']['staium'] && parsed['venue']['city'])
+        res['venue'] = parsed['venue']['stadium']['name'] + ' - ' + parsed['venue']['city']['name'];
+      if(parsed['customId'])
+        res['customId'] = parsed['customId'];
       if(parsed['referee'] && parsed['referee']['name'])
         res['refree'] = parsed['referee']['name'];
       res['isStats'] = parsed['hasEventPlayerStatistics']?parsed['hasEventPlayerStatistics']:false;
-      res['homeScore'] = new FixtureScore(parsed['homeScore']);
-      res['awayScore'] = new FixtureScore(parsed['awayScore']);
-    }); 
+      if(parsed['homeScore'] && parsed['awayScore']) {
+        res['homeScore'] = new FixtureScore(parsed['homeScore']);
+        res['awayScore'] = new FixtureScore(parsed['awayScore']);
+      }
+    }, ()=>{console.warn('events NA')}); 
     return res;
   }
 
