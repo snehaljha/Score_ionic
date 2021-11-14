@@ -89,10 +89,12 @@ export class FixtureService {
       home['players'] = players;
       home['subs'] = subs;      
       players = new Array<Player>();
-      for(const i of parsed['missingPlayers']) {
-        const player = new Player(i['player']);
-        player.shirtNumber = i['shirtNumber'];
-        players.push(player);
+      if(parsed['missingPlayers']) {
+        for(const i of parsed['missingPlayers']) {
+          const player = new Player(i['player']);
+          player.shirtNumber = i['shirtNumber'];
+          players.push(player);
+        }
       }
       home['missingPlayers'] = players;
       linupDetails['home'] = home;
@@ -116,10 +118,12 @@ export class FixtureService {
       away['players'] = players;
       away['subs'] = subs;
       players = new Array<Player>();
-      for(const i of parsed['missingPlayers']) {
-        const player = new Player(i['player']);
-        player.shirtNumber = i['shirtNumber'];
-        players.push(player);
+      if(parsed['missingPlayers']) {
+        for(const i of parsed['missingPlayers']) {
+          const player = new Player(i['player']);
+          player.shirtNumber = i['shirtNumber'];
+          players.push(player);
+        }
       }
       away['missingPlayers'] = players;
       linupDetails['away'] = away;
