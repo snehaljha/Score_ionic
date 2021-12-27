@@ -15,12 +15,25 @@ import { SharedFixtureService } from 'src/app/shared/shared-fixture.service';
 export class LiveFixturesComponent implements OnInit {
   fixtures: Array<Fixture>;
   private prevTitle: string;
+  private thread: any;
 
   constructor(private liveFixturesService: LiveFixturesService, private sharedLeague: SharedLeagueService, private router: Router, private sharedFixture: SharedFixtureService) {
     this.prevTitle = '';
   }
 
   ngOnInit() {
+    this.refreshFixtures();
+    if(this.thread == undefined) {
+      this.thread = setInterval(() => this.refreshFixtures(), 45000);
+    }
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.thread);
+    this.thread = undefined;
+  }
+
+  private refreshFixtures() {
     this.fixtures = this.liveFixturesService.fetch();
   }
 

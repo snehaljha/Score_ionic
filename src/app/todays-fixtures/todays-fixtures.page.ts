@@ -16,6 +16,7 @@ export class TodaysFixturesPage implements OnInit {
   fixtures: Array<Fixture>;
   private prevTitle: string;
   private prevDate: string;
+  private thread: any;
 
   constructor(private todaysFixturesLoader: TodaysFixturesLoaderService, private sharedLeague: SharedLeagueService, private router: Router, private sharedFixture: SharedFixtureService) {
     this.prevTitle = '';
@@ -23,6 +24,18 @@ export class TodaysFixturesPage implements OnInit {
   }
 
   ngOnInit() {
+    this.refreshFixtures();
+    if(this.thread == undefined) {
+      this.thread = setInterval(() => this.refreshFixtures(), 45000);
+    }
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.thread);
+    this.thread = undefined;
+  }
+
+  private refreshFixtures() {
     this.fixtures = this.todaysFixturesLoader.fetch();
   }
 

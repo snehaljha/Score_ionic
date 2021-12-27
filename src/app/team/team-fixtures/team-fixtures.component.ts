@@ -18,15 +18,29 @@ export class TeamFixturesComponent implements OnInit {
   team: Team;
   fixtures: Array<Fixture>;
   private prevTitle: string;
+  private thread: any;
 
-  constructor(private sharedTeam: SharedTeamService, teamService: TeamService, private sharedFixture: SharedFixtureService,
+  constructor(private sharedTeam: SharedTeamService, private teamService: TeamService, private sharedFixture: SharedFixtureService,
     private router: Router, private sharedLeague: SharedLeagueService) {
     this.team = sharedTeam.getData();
     this.fixtures = teamService.fetchFixtures(this.team.id);
     this.prevTitle = '';
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.thread == undefined) {
+      this.thread = setInterval(() => this.refreshFixtures(), 100000);
+    }
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.thread);
+    this.thread = undefined;
+  }
+
+  private refreshFixtures() {
+    this.fixtures = this.teamService.fetchFixtures(this.team.id);
+  }
 
   isTitleNeeded(title: string, code: number, ind: number): boolean {
     if(title === this.prevTitle)
