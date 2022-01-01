@@ -58,10 +58,10 @@ export class FixtureService {
           events.push(event);
         }
       }
-      res['hs'] = hScore;
-      res['as'] = aScore;
-      res['events'] = events;
-      res['isLive'] = isLive;
+      res.set('hs',hScore);
+      res.set('as', aScore);
+      res.set('events', events);
+      res.set('isLive', isLive);
     });
     return res;
   }

@@ -1,27 +1,33 @@
 <ion-content>
+  <ion-row (click)="gotoLeague()" >
+    <ion-img [src]="fixture.league.logo" class="league-img"></ion-img>
+    <ion-text class="league-name">
+      {{fixture.league.name}}
+    </ion-text>
+  </ion-row>
   <ion-card class="main-card" *ngIf="fixture && eventDetails" >
     <ion-row>
       <ion-col size="4">
-        <ion-img class="team-logo" [src]="fixture.homeTeam.teamLogo"></ion-img>
+        <ion-img class="team-logo" [src]="fixture.homeTeam.teamLogo" (click)="gotoTeam(fixture.homeTeam)"></ion-img>
         <ion-icon name="heart" [ngClass]="fixture.homeTeam.favourite?'fav':'normal'" (click)="changeFav(fixture.homeTeam, $event)" ></ion-icon>
       </ion-col>
       <ion-col size="4">
         <ion-row>
-          <ion-title class="team-name">{{getScore(eventDetails['hs'], eventDetails['as'])}}</ion-title>
+          <ion-title class="team-name">{{getScore(eventDetails.get('hs'), eventDetails.get('as'))}}</ion-title>
         </ion-row>
         <ion-row>
-          <ion-text class="team-name">{{fixture.getStatusMessage()}}</ion-text>
+          <ion-text class="team-name">{{this.fixtureStatus}}</ion-text>
         </ion-row>
       </ion-col>
       <ion-col size="4">
-        <ion-img class="team-logo" [src]="fixture.awayTeam.teamLogo"></ion-img>
+        <ion-img class="team-logo" [src]="fixture.awayTeam.teamLogo" (click)="gotoTeam(fixture.awayTeam)"></ion-img>
         <ion-icon name="heart" [ngClass]="fixture.awayTeam.favourite?'fav':'normal'" (click)="changeFav(fixture.awayTeam, $event)" ></ion-icon>
       </ion-col>
     </ion-row>
   </ion-card>
 
-  <ion-list *ngIf="eventDetails && eventDetails['events']" >
-    <ion-item *ngFor="let event of eventDetails['events']">
+  <ion-list *ngIf="eventDetails && eventDetails.get('events')" >
+    <ion-item *ngFor="let event of eventDetails.get('events')">
       <ion-row [ngClass]="event.isHome==true?'':(event.isHome == false?'away':'middle')">
         <span *ngIf="event.isHome != undefined; else bothEvent">
           <span *ngIf="event.isHome; else away">

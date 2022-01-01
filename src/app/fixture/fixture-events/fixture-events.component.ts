@@ -6,6 +6,9 @@ import { Fixture } from 'src/app/models/fixture';
 import { SharedFixtureService } from 'src/app/shared/shared-fixture.service';
 import { FixtureEvent } from 'src/app/models/fixture-event';
 import { Team } from 'src/app/models/team';
+import { SharedTeamService } from 'src/app/shared/shared-team.service';
+import { SharedLeagueService } from 'src/app/shared/shared-league.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fixture-events',
@@ -16,17 +19,20 @@ export class FixtureEventsComponent implements OnInit {
 
   fixture: Fixture;
   info: Map<any, any>;
-  eventDetails: Map<any, any>;
+  eventDetails: Map<string, any>;
   time: string;
   thread: any;
   firstFetch: boolean;
+  fixtureStatus: string;
 
-  constructor(private sharedFixture: SharedFixtureService, private fixtureService: FixtureService, private favouriteService: FavouriteService) {
+  constructor(private sharedFixture: SharedFixtureService, private fixtureService: FixtureService, private favouriteService: FavouriteService, private sharedTeam: SharedTeamService, private sharedLeague: SharedLeagueService, private router: Router) {
+    this.fixtureStatus = '-';
     this.fixture = sharedFixture.getData();
     this.firstFetch = true;
     this.fixture.homeTeam.favourite = favouriteService.contains(this.fixture.homeTeam);
     this.fixture.awayTeam.favourite = favouriteService.contains(this.fixture.awayTeam);
     this.info = fixtureService.fetchInfo(this.fixture.id);
+    this.fixtureStatus = this.fixture.getStatusMessage();
   }
 
   ngOnInit() {
@@ -58,11 +64,21 @@ export class FixtureEventsComponent implements OnInit {
   // }
 
   private refreshDetails() {
-    if(this.firstFetch || this.eventDetails['isLive']) {
+    if(this.firstFetch || this.eventDetails.get('isLive')) {
       this.firstFetch = false;
       this.eventDetails = this.fixtureService.fetchEvents(this.fixture.id);
       this.time = this.fixture.getStatusMessage();
+      console.log(this.eventDetails.get("hs"));
     }
+
+    if(this.eventDetails.get('events') && this.eventDetails.get('events')[0]) {
+      console.log('found now');
+      if(this.eventDetails.get('events')[0].msg == 'HT')
+        this.fixture.statusCode = 31;
+      else if(this.eventDetails.get('events')[0].msg == 'FT')
+        this.fixture.statusCode = 100;
+    }
+    this.fixtureStatus = this.fixture.getStatusMessage();
     console.info('refreshed');
   }
 
@@ -82,6 +98,16 @@ export class FixtureEventsComponent implements OnInit {
       this.favouriteService.removeTeam(team);
     }
     this.favouriteService.sync();
+  }
+
+  gotoTeam(team: Team) {
+    this.sharedTeam.setData(team);
+    this.router.navigate(['team']);
+  }
+
+  gotoLeague() {
+    this.sharedLeague.setData(this.fixture.league);
+    this.router.navigate(['league']);
   }
 
 }
