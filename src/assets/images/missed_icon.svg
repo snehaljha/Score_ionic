@@ -1,78 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
-    <title>icons/timeline-card/pen-miss</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <path d="M12,22.5 C17.7989901,22.5 22.5,17.7989901 22.5,12 C22.5,6.20100984 17.7989901,1.5 12,1.5 C6.20100984,1.5 1.5,6.20100984 1.5,12 C1.5,17.7989901 6.20100984,22.5 12,22.5 Z" id="path-1"></path>
-        <path d="M10.5,21 C16.2989901,21 21,16.2989901 21,10.5 C21,4.70100984 16.2989901,0 10.5,0 C4.70100984,0 0,4.70100984 0,10.5 C0,16.2989901 4.70100984,21 10.5,21 Z" id="path-2"></path>
-        <path d="M10.5,21 C16.2989901,21 21,16.2989901 21,10.5 C21,4.70100984 16.2989901,0 10.5,0 C4.70100984,0 0,4.70100984 0,10.5 C0,16.2989901 4.70100984,21 10.5,21 Z" id="path-4"></path>
-        <path d="M10.5,21 C16.2989901,21 21,16.2989901 21,10.5 C21,4.70100984 16.2989901,0 10.5,0 C4.70100984,0 0,4.70100984 0,10.5 C0,16.2989901 4.70100984,21 10.5,21 Z" id="path-6"></path>
-        <path d="M10.5,21 C16.2989901,21 21,16.2989901 21,10.5 C21,4.70100984 16.2989901,0 10.5,0 C4.70100984,0 0,4.70100984 0,10.5 C0,16.2989901 4.70100984,21 10.5,21 Z" id="path-8"></path>
-        <path d="M10.5,21 C16.2989901,21 21,16.2989901 21,10.5 C21,4.70100984 16.2989901,0 10.5,0 C4.70100984,0 0,4.70100984 0,10.5 C0,16.2989901 4.70100984,21 10.5,21 Z" id="path-10"></path>
-        <path d="M10.5,21 C16.2989901,21 21,16.2989901 21,10.5 C21,4.70100984 16.2989901,0 10.5,0 C4.70100984,0 0,4.70100984 0,10.5 C0,16.2989901 4.70100984,21 10.5,21 Z" id="path-12"></path>
-    </defs>
-    <g id="World-Cup-2018" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="B00_World_Cup" transform="translate(-1040.000000, -263.000000)">
-            <g id="icons/soccer/timeline-card/pen-shootout-miss" transform="translate(1040.000000, 263.000000)">
-                <g id="miss">
-                    <g id="Soccer-ball">
-                        <g id="Oval-1">
-                            <circle id="Oval" fill="#FFFFFF" cx="12" cy="12" r="12"></circle>
-                            <g id="path-1" fill-rule="nonzero">
-                                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
-                                <path stroke="#000000" stroke-width="2" d="M12,21.5 C17.2467054,21.5 21.5,17.2467054 21.5,12 C21.5,6.7532946 17.2467054,2.5 12,2.5 C6.75329459,2.5 2.5,6.75329459 2.5,12 C2.5,17.2467054 6.7532946,21.5 12,21.5 Z"></path>
-                            </g>
-                        </g>
-                        <g id="Polygon-1-Clipped" transform="translate(1.500000, 1.500000)">
-                            <mask id="mask-3" fill="white">
-                                <use xlink:href="#path-2"></use>
-                            </mask>
-                            <g id="path-1"></g>
-                            <polygon id="Polygon-1" fill="#000000" fill-rule="nonzero" mask="url(#mask-3)" points="10.5 7 13.8286978 9.41844051 12.5572484 13.3315595 8.44275162 13.3315595 7.17130219 9.41844051"></polygon>
-                        </g>
-                        <g id="Polygon-1-copy-Clipped" transform="translate(1.500000, 1.500000)">
-                            <mask id="mask-5" fill="white">
-                                <use xlink:href="#path-4"></use>
-                            </mask>
-                            <g id="path-1"></g>
-                            <polygon id="Polygon-1-copy" fill="#000000" fill-rule="nonzero" mask="url(#mask-5)" points="10.5 -2.8 13.8286978 -0.38155948 12.5572484 3.53155949 8.44275162 3.53155949 7.17130219 -0.38155948"></polygon>
-                        </g>
-                        <g id="Polygon-1-copy-2-Clipped" transform="translate(1.500000, 1.500000)">
-                            <mask id="mask-7" fill="white">
-                                <use xlink:href="#path-6"></use>
-                            </mask>
-                            <g id="path-1"></g>
-                            <polygon id="Polygon-1-copy-2" fill="#000000" fill-rule="nonzero" mask="url(#mask-7)" points="4.9 15.4 8.22869781 17.8184405 6.95724838 21.7315595 2.84275162 21.7315595 1.57130219 17.8184405"></polygon>
-                        </g>
-                        <g id="Polygon-1-copy-3-Clipped" transform="translate(1.500000, 1.500000)">
-                            <mask id="mask-9" fill="white">
-                                <use xlink:href="#path-8"></use>
-                            </mask>
-                            <g id="path-1"></g>
-                            <polygon id="Polygon-1-copy-3" fill="#000000" fill-rule="nonzero" mask="url(#mask-9)" points="16.1 15.4 19.4286978 17.8184405 18.1572483 21.7315595 14.0427517 21.7315595 12.7713022 17.8184405"></polygon>
-                        </g>
-                        <g id="Polygon-1-copy-3-Clipped" transform="translate(1.500000, 1.500000)">
-                            <mask id="mask-11" fill="white">
-                                <use xlink:href="#path-10"></use>
-                            </mask>
-                            <g id="path-1"></g>
-                            <polygon id="Polygon-1-copy-3" fill="#000000" fill-rule="nonzero" mask="url(#mask-11)" points="0.7 4.2 4.02869781 6.61844051 2.75724838 10.5315595 -1.35724838 10.5315595 -2.62869781 6.61844051"></polygon>
-                        </g>
-                        <g id="Polygon-1-copy-4-Clipped" transform="translate(1.500000, 1.500000)">
-                            <mask id="mask-13" fill="white">
-                                <use xlink:href="#path-12"></use>
-                            </mask>
-                            <g id="path-1"></g>
-                            <polygon id="Polygon-1-copy-4" fill="#000000" fill-rule="nonzero" mask="url(#mask-13)" points="20.3 4.2 23.6286978 6.61844051 22.3572483 10.5315595 18.2427517 10.5315595 16.9713022 6.61844051"></polygon>
-                        </g>
-                    </g>
-                    <g id="Miss" transform="translate(11.000000, 11.000000)" fill-rule="nonzero">
-                        <circle id="Oval-12" fill="#E51C23" cx="6" cy="6" r="6"></circle>
-                        <polygon id="missed-in-penalties-2" fill="#FFFFFF" points="7.9395 3 6 4.9395 4.0605 3 3 4.0605 4.9395 6 3 7.9395 4.0605 9 6 7.0605 7.9395 9 9 7.9395 7.0605 6 9 4.0605"></polygon>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="45pt" height="35.65pt" viewBox="227.5 227.5 45 35.64999999999998" xml:space="preserve">
+<desc>Created with Fabric.js 4.6.0</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 250 240)" id="-O7-PVbN4z2xHa327K_UE"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,36); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-24, -14)" d="M 40.5 2 L 7.5 2 C 4.48 2 2 4.16 2 6.82 L 2 24.72 C 2 25.419999999999998 2.62 26 3.38 26 C 4.14 26 4.76 25.42 4.76 24.72 L 4.76 6.82 C 4.76 5.58 6 4.58 7.5 4.58 L 40.5 4.58 C 42 4.58 43.24 5.6 43.24 6.82 L 43.24 24.72 C 43.24 25.419999999999998 43.86 26 44.620000000000005 26 C 45.400000000000006 26 46.00000000000001 25.42 46.00000000000001 24.72 L 46.00000000000001 6.82 C 46 4.16 43.52 2 40.5 2 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 250 250.65)" id="UGjbFQAiZwn9jRNaHP3lQ"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-12, -12)" d="M 0 12 C 0 5.37258 5.37258 0 12 0 C 18.62742 0 24 5.37258 24 12 C 24 18.62742 18.62742 24 12 24 C 5.37258 24 0 18.62742 0 12 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 250 250.65)" id="kaotCqYOpcsMPlcD6lWSU"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-12, -12)" d="M 12 22.5 C 17.7989901 22.5 22.5 17.7989901 22.5 12 C 22.5 6.20100984 17.7989901 1.5 12 1.5 C 6.20100984 1.5 1.5 6.20100984 1.5 12 C 1.5 17.7989901 6.20100984 22.5 12 22.5 Z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 250 250.65)" id="7IjIYno_5E-3JzIrOvOpv"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 2; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-12, -12)" d="M 12 21.5 C 17.2467054 21.5 21.5 17.2467054 21.5 12 C 21.5 6.7532946 17.2467054 2.5 12 2.5 C 6.75329459 2.5 2.5 6.75329459 2.5 12 C 2.5 17.2467054 6.7532946 21.5 12 21.5 Z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 250 250.32)" id="qUOdJ5xVg7NDgPyiBuBwQ"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-10.5, -10.17)" d="M 10.5 7 L 13.8287 9.41844 L 12.55725 13.33156 L 8.44275 13.33156 L 7.1713000000000005 9.41844 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1.05 0 0 0.95 249.5 243)" id="aQjtF-mlDPAxlW2Tro4NB"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-10.5, -0.37)" d="M 10.5 -2.8 L 13.8287 -0.3815599999999999 L 12.55725 3.5315600000000003 L 8.44275 3.5315600000000003 L 7.1713000000000005 -0.3815599999999999 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1.05 0 0 0.95 244.5 255)" id="BdcKzJhJXY7AD08jpgqVw"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-4.9, -18.57)" d="M 4.9 15.4 L 8.2287 17.81844 L 6.95725 21.731559999999998 L 2.8427500000000006 21.731559999999998 L 1.5713000000000006 17.81844 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 255.6 258.72)" id="_xjOPUiKyhMsGFE24bapK"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-16.1, -18.57)" d="M 16.1 15.4 L 19.428700000000003 17.81844 L 18.15725 21.731559999999998 L 14.042750000000002 21.731559999999998 L 12.771300000000002 17.81844 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1.05 0 0 0.95 243.5 248)" id="UYi5lKBtp4z0EHe4JWwRZ"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-0.7, -7.37)" d="M 0.7 4.2 L 4.0287 6.61844 L 2.75725 10.531559999999999 L -1.3572499999999996 10.531559999999999 L -2.6286999999999994 6.618439999999999 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1.05 0 0 0.95 256.5 247)" id="4suRanS4GprOdr8anCBfV"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-20.3, -7.37)" d="M 20.3 4.2 L 23.628700000000002 6.61844 L 22.35725 10.531559999999999 L 18.24275 10.531559999999999 L 16.9713 6.618439999999999 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 255 255.65)" id="7-8dk8N5FQpoxiGiHrbIG"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(229,28,35); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-6, -6)" d="M 0 6 C 0 2.68629 2.68629 0 6 0 C 9.31371 0 12 2.68629 12 6 C 12 9.31371 9.31371 12 6 12 C 2.68629 12 0 9.31371 0 6 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 255 255.65)" id="BKewHTr46zls5lPP0eNhg"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-6, -6)" d="M 7.9395 3 L 6 4.9395 L 4.0605 3 L 3 4.0605 L 4.9395 6 L 3 7.9395 L 4.0605 9 L 6 7.0605 L 7.9395 9 L 9 7.9395 L 7.0605 6 L 9 4.0605 z" stroke-linecap="round" />
+</g>
 </svg>

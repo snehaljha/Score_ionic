@@ -1,15 +1,16 @@
-<?xml version="1.0"?>
-<svg height="300px" width="300px" xmlns="http://www.w3.org/2000/svg">
-<radialGradient id="X" cx="149.833" cy="149.833" r="150" gradientUnits="userSpaceOnUse">
-<stop offset="0" stop-color="#FFFFFF"/>
-<stop offset="0.4923" stop-color="#FDFDFD"/>
-<stop offset="0.6696" stop-color="#F6F6F6"/>
-<stop offset="0.796" stop-color="#EBEBEB"/>
-<stop offset="0.898" stop-color="#DADADA"/>
-<stop offset="0.9845" stop-color="#C4C4C4"/>
-<stop offset="1" stop-color="#BFBFBF"/>
-</radialGradient>
-<circle fill="url(#X)" cx="149.8" cy="149.8" r="150"/>
-<rect fill="#CC0000" height="60" width="200" x="49.8" y="119.8"/>
-<rect fill="#CC0000" height="200" width="60" x="119.8" y="49.8"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="69pt" height="76pt" viewBox="273 265 69 76" xml:space="preserve">
+<desc>Created with Fabric.js 4.6.0</desc>
+<defs>
+</defs>
+<g transform="matrix(0 -4.43 4.1 0 321 309.5)" id="tssQ8Wusj9fYeBpbu2z72"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(208,2,27); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-16.13, -14.88)" d="M 14.20318 9.875 L 9.125 14.875 L 14.20318 19.875 L 14.20318 16.125 L 23.125 16.125 L 23.125 13.625 L 14.20318 13.625 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(0 -4.43 4.1 0 294 296.5)" id="EhXxXwQPCYK3Z7RjPLmUa"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(37,155,36); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-7.88, -8.88)" d="M 14.875 8.875 L 9.79682 3.875 L 9.79682 7.625 L 0.875 7.625 L 0.875 10.125 L 9.79682 10.125 L 9.79682 13.875 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(0.65 0 0 0.17 320.5 295.5)" id="kjfC-5Hy6JB_nj4I6Fx_8"  >
+<path style="stroke: rgb(253,181,98); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(208,2,27); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M -31.5 -31.5 L 31.5 -31.5 L 31.5 31.5 L -31.5 31.5 z" stroke-linecap="round" />
+</g>
 </svg>
