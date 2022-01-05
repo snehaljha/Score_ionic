@@ -73,6 +73,10 @@ export class FixtureService {
       linupDetails['confirmation'] = data['confirmed']?'Confirmed Lineup':'Predicted Linup';
       let parsed = data['home'];
       const home = new Map<any, any>();
+      let colors = parsed['playerColor'];
+      home['playerColor'] = colors;
+      colors = parsed['goalkeeperColor'];
+      home['goalkeeperColor'] = colors;
       home['formation'] = parsed['formation'];
       let players = new Array<Player>();
       let subs = new Array<Player>();
@@ -102,6 +106,10 @@ export class FixtureService {
 
       parsed = data['away'];
       const away = new Map<any, any>();
+      colors = parsed['playerColor'];
+      away['playerColor'] = colors;
+      colors = parsed['goalkeeperColor'];
+      away['goalkeeperColor'] = colors;
       away['formation'] = parsed['formation'];
       players = new Array<Player>();
       subs = new Array<Player>();

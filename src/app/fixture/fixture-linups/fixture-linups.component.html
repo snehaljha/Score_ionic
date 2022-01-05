@@ -22,26 +22,44 @@
         <ion-text class="info">{{linupDetails['away']['formation']}}</ion-text>
       </ion-row>
       <ion-list *ngIf="linupDetails['away']['players']" >
-        <ion-item *ngFor="let player of linupDetails['away']['players']">
+        <div *ngIf="parseLinup(linupDetails['away']['formation'], linupDetails['away']['players']) && linupGraph; else NOT_PARSABLE_AWAY">
           <ion-grid>
-            <ion-row>
-              <ion-col size="1">
-                <ion-text>{{player.shirtNumber}}</ion-text>
-              </ion-col>
-              <ion-col size="3">
-                <ion-img [src]="player.photo" class="player-img"></ion-img>
-              </ion-col>
-              <ion-col size="7">
-                <ion-text>{{player.name}}</ion-text>
-              </ion-col>
-              <ion-col size="1">
-                <ion-text>{{player.position}}</ion-text>
+            <ion-row *ngFor="let i of linupGraph" class="graph-row">
+              <ion-col *ngFor="let j of i">
+                <div class="graph-circle" [ngStyle]="{'color': ('#' + (j.position == 'G'? linupDetails['away']['goalkeeperColor']['number']:linupDetails['away']['playerColor']['number'])),
+                'background': ('#' + (j.position == 'G'? linupDetails['away']['goalkeeperColor']['primary']:linupDetails['away']['playerColor']['primary'])),
+                'outline-color': ('#' + (j.position == 'G'? linupDetails['away']['goalkeeperColor']['outline']:linupDetails['away']['playerColor']['outline']))}">
+                  {{j.shirtNumber}}
+                </div>
+                <div>
+                  {{j.shortName}}
+                </div>
               </ion-col>
             </ion-row>
           </ion-grid>
-        </ion-item>
+        </div>
+        <ng-template #NOT_PARSABLE_AWAY>
+          <ion-item *ngFor="let player of linupDetails['away']['players']">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="1">
+                  <ion-text>{{player.shirtNumber}}</ion-text>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-img [src]="player.photo" class="player-img"></ion-img>
+                </ion-col>
+                <ion-col size="7">
+                  <ion-text>{{player.name}}</ion-text>
+                </ion-col>
+                <ion-col size="1">
+                  <ion-text>{{player.position}}</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ng-template>
       </ion-list>
-
+      
       <ion-row *ngIf="linupDetails['away']['subs']" class="info">
         <ion-text class="info">Substitutes</ion-text>
       </ion-row>
@@ -98,24 +116,40 @@
           <ion-text class="info">{{linupDetails.home.formation}}</ion-text>
         </ion-row>
         <ion-list *ngIf="linupDetails['home']['players']" >
-          <ion-item *ngFor="let player of linupDetails['home']['players']">
+          <div *ngIf="parseLinup(linupDetails['home']['formation'], linupDetails['home']['players']) && linupGraph; else NOT_PARSABLE_HOME">
             <ion-grid>
-              <ion-row>
-                <ion-col size="1">
-                  <ion-text>{{player.shirtNumber}}</ion-text>
-                </ion-col>
-                <ion-col size="3">
-                  <ion-img [src]="player.photo" class="player-img"></ion-img>
-                </ion-col>
-                <ion-col size="7">
-                  <ion-text>{{player.name}}</ion-text>
-                </ion-col>
-                <ion-col size="1">
-                  <ion-text>{{player.position}}</ion-text>
+              <ion-row *ngFor="let i of linupGraph" class="graph-row">
+                <ion-col *ngFor="let j of i">
+                  <div class="graph-circle">
+                    {{j.shirtNumber}}
+                  </div>
+                  <div>
+                    {{j.shortName}}
+                  </div>
                 </ion-col>
               </ion-row>
             </ion-grid>
-          </ion-item>
+          </div>
+          <ng-template #NOT_PARSABLE_HOME>
+            <ion-item *ngFor="let player of linupDetails['home']['players']">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="1">
+                    <ion-text>{{player.shirtNumber}}</ion-text>
+                  </ion-col>
+                  <ion-col size="3">
+                    <ion-img [src]="player.photo" class="player-img"></ion-img>
+                  </ion-col>
+                  <ion-col size="7">
+                    <ion-text>{{player.name}}</ion-text>
+                  </ion-col>
+                  <ion-col size="1">
+                    <ion-text>{{player.position}}</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ng-template>
         </ion-list>
 
         <ion-row *ngIf="linupDetails['home']['subs']">
