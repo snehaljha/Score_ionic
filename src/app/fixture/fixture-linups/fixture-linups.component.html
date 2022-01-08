@@ -28,7 +28,7 @@
               <ion-col *ngFor="let j of i">
                 <div class="graph-circle" [ngStyle]="{'color': ('#' + (j.position == 'G'? linupDetails['away']['goalkeeperColor']['number']:linupDetails['away']['playerColor']['number'])),
                 'background': ('#' + (j.position == 'G'? linupDetails['away']['goalkeeperColor']['primary']:linupDetails['away']['playerColor']['primary'])),
-                'outline-color': ('#' + (j.position == 'G'? linupDetails['away']['goalkeeperColor']['outline']:linupDetails['away']['playerColor']['outline']))}">
+                'border-color': ('#' + (j.position == 'G'? linupDetails['away']['goalkeeperColor']['outline']:linupDetails['away']['playerColor']['outline']))}">
                   {{j.shirtNumber}}
                 </div>
                 <div>
@@ -120,7 +120,9 @@
             <ion-grid>
               <ion-row *ngFor="let i of linupGraph" class="graph-row">
                 <ion-col *ngFor="let j of i">
-                  <div class="graph-circle">
+                  <div class="graph-circle" [ngStyle]="{'color': ('#' + (j.position == 'G'? linupDetails['home']['goalkeeperColor']['number']:linupDetails['home']['playerColor']['number'])),
+                  'background': ('#' + (j.position == 'G'? linupDetails['home']['goalkeeperColor']['primary']:linupDetails['home']['playerColor']['primary'])),
+                  'border-color': ('#' + (j.position == 'G'? linupDetails['home']['goalkeeperColor']['outline']:linupDetails['home']['playerColor']['outline']))}">
                     {{j.shirtNumber}}
                   </div>
                   <div>
