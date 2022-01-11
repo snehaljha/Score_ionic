@@ -1,4 +1,4 @@
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Storage } from '@capacitor/storage';
 import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
 
@@ -9,11 +9,14 @@ export class FavouriteService {
 
   private favourites: Array<Team>;
 
-  constructor(private nativeStorage: NativeStorage) {
-    nativeStorage.getItem('favourites').then(data => {this.favourites = data['teams'] as Array<Team>});
-    if(!this.favourites)
-      this.favourites = new Array<Team>();
+  init() {
+    this.getObject('favourites').then(data => {
+      this.favourites = data as unknown as Array<Team>;
+      if(!this.favourites)
+        this.favourites = new Array<Team>();
+    });
   }
+
 
   addTeam(team: Team) {
     for(const t of this.favourites) {
@@ -21,6 +24,7 @@ export class FavouriteService {
         return;
     }
     this.favourites.push(team);
+    this.setObject('favourites', this.favourites);
   }
 
   removeTeam(team: Team) {
@@ -34,13 +38,39 @@ export class FavouriteService {
     if(ind == this.favourites.length)
       return;
     this.favourites.splice(ind, 1);
+    this.setObject('favourites', this.favourites);
   }
 
-  sync() {
-    this.nativeStorage.setItem('favourites', {'teams': this.favourites});
+  async setString(key: string, value: string) {
+      await Storage.set({ key, value });
   }
 
-  contains(team: Team) {
+  async getString(key: string): Promise<{ value: any }> {
+      return (await Storage.get({ key }));
+  }
+
+  async setObject(key: string, value: any) {
+      await Storage.set({ key, value: JSON.stringify(value) });
+  }
+
+  async getObject(key: string): Promise<{ value: any }> {
+      const ret = await Storage.get({ key });
+      return JSON.parse(ret.value);
+  }
+
+
+  async removeItem(key: string) {
+      await Storage.remove({ key });
+  }
+
+  async clear() {
+      await Storage.clear();
+  }
+
+  async contains(team: Team) {
+    if(this.favourites == undefined) {
+      await this.init();
+    }
     for(const t of this.favourites) {
       if(t.id == team.id) {
         return true;

@@ -14,7 +14,7 @@ export class TopTeamsService {
   fetch() {
     const response = this.http.get(Contants.topTeams);
     const teams = new Array<Team>();
-    response.subscribe(data => {
+    response.subscribe(async data => {
       const newLocal = 'teams';
       const parsed = data[newLocal];
       let ind=0;
@@ -27,7 +27,8 @@ export class TopTeamsService {
       }
 
       for(const t of teams) {
-        if(this.favouriteService.contains(t)) {
+        let favTeam: boolean = await this.favouriteService.contains(t);
+        if(favTeam) {
           t.favourite = true;
         }
       }

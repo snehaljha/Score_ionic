@@ -29,8 +29,8 @@ export class FixtureEventsComponent implements OnInit {
     this.fixtureStatus = '-';
     this.fixture = sharedFixture.getData();
     this.firstFetch = true;
-    this.fixture.homeTeam.favourite = favouriteService.contains(this.fixture.homeTeam);
-    this.fixture.awayTeam.favourite = favouriteService.contains(this.fixture.awayTeam);
+    favouriteService.contains(this.fixture.homeTeam).then(value => {this.fixture.homeTeam.favourite = value});
+    favouriteService.contains(this.fixture.awayTeam).then(value => {this.fixture.awayTeam.favourite = value});
     this.info = fixtureService.fetchInfo(this.fixture.id);
     this.fixtureStatus = this.fixture.getStatusMessage();
   }
@@ -97,7 +97,6 @@ export class FixtureEventsComponent implements OnInit {
     else {
       this.favouriteService.removeTeam(team);
     }
-    this.favouriteService.sync();
   }
 
   gotoTeam(team: Team) {

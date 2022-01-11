@@ -33,7 +33,6 @@ export class TopTeamsComponent implements OnInit {
     else {
       this.favouriteService.removeTeam(team);
     }
-    this.favouriteService.sync();
   }
 
 }

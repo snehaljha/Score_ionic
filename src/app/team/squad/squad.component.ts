@@ -20,11 +20,7 @@ export class SquadComponent implements OnInit {
 
   constructor(sharedTeam: SharedTeamService, public teamService: TeamService, private favouriteService: FavouriteService) {
     this.team = sharedTeam.getData();
-    if(favouriteService.contains(this.team)) {
-      this.team.favourite = true;
-    } else {
-      this.team.favourite = false;
-    }
+    favouriteService.contains(this.team).then(value => {this.team.favourite = value});
     this.basicInfo = teamService.fetchBasicInfo(this.team.id);
     this.squad = teamService.fetchSquad(this.team.id);
     this.emptyPlayerPhoto = Contants.emptyPlayerPhoto;
@@ -45,7 +41,6 @@ export class SquadComponent implements OnInit {
     else {
       this.favouriteService.removeTeam(team);
     }
-    this.favouriteService.sync();
   }
 
 }

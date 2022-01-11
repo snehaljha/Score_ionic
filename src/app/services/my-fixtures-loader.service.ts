@@ -40,7 +40,7 @@ export class MyFixturesLoaderService {
     const response = this.http.get(Contants.fixtureByDate.replace('yyyy-mm-dd', this.date));
     const fixtures = new Array<Fixture>();
     const set = new Set();
-    response.subscribe(data => {
+    response.subscribe(async data => {
       const newLocal = 'events';
       const parsed = data[newLocal];
       for(const i in parsed) {
@@ -50,14 +50,16 @@ export class MyFixturesLoaderService {
         } else {
           fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
         }
-        if((this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam)) && !set.has(fixture.id)) {
+        let homeFav : boolean = await this.favouriteService.contains(fixture.homeTeam);
+        let awayFav: boolean = await this.favouriteService.contains(fixture.awayTeam);
+        if((homeFav || awayFav) && !set.has(fixture.id)) {
           set.add(fixture.id);
           fixtures.push(fixture);
         }
       }
 
       const url = Contants.fixtureByDate.replace('yyyy-mm-dd', this.yesterday)
-      this.http.get(url).subscribe(data => {
+      this.http.get(url).subscribe(async data => {
         const newLocal = 'events';
         const parsed = data[newLocal];
         for(const i in parsed) {
@@ -67,14 +69,16 @@ export class MyFixturesLoaderService {
           } else {
             fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
           }
-          if((this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam)) && !set.has(fixture.id)) {
+          let homeFav : boolean = await this.favouriteService.contains(fixture.homeTeam);
+        let awayFav: boolean = await this.favouriteService.contains(fixture.awayTeam);
+        if((homeFav || awayFav) && !set.has(fixture.id)) {
             set.add(fixture.id);
             fixtures.push(fixture);
           }
         }
 
         const url = Contants.fixtureByDate.replace('yyyy-mm-dd', this.tomorrow)
-        this.http.get(url).subscribe(data => {
+        this.http.get(url).subscribe(async data => {
           const newLocal = 'events';
           const parsed = data[newLocal];
           for(const i in parsed) {
@@ -84,7 +88,9 @@ export class MyFixturesLoaderService {
             } else {
               fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
             }
-            if((this.favouriteService.contains(fixture.homeTeam) || this.favouriteService.contains(fixture.awayTeam)) && !set.has(fixture.id)) {
+        let homeFav : boolean = await this.favouriteService.contains(fixture.homeTeam);
+        let awayFav: boolean = await this.favouriteService.contains(fixture.awayTeam);
+        if((homeFav || awayFav) && !set.has(fixture.id)) {
               set.add(fixture.id);
               fixtures.push(fixture);
             }
