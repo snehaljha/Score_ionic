@@ -4,16 +4,28 @@ A simple sports app to deliver All sorts of information about leagues, cups, tea
 
 ## Features
 * Football Scores, Linups and Stats available in real-time.
-![Score and Events](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/2.jpeg) ![Lineups](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/8.jpeg) ![Stats](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/3.jpeg) 
+
+![Score and Events](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/2.jpeg | height=300) ![Lineups](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/8.jpeg | height=300) ![Stats](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/3.jpeg | height=300) 
+
+
 
 * Team info including sqauds and matches and stats across different competitions.
-![Squad](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/5.jpeg) ![Stats](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/7.jpeg) 
+
+![Squad](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/5.jpeg | height=300) ![Stats](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/7.jpeg | height=300) 
+
+
 
 * League related details and Stats.
-![League Standings](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/6.jpeg) 
+
+![League Standings](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/6.jpeg | height=300) 
+
+
 
 * Favourite teams can be tracked on separate section.
-![Top Teams](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/1.jpeg) ![My Fixtures](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/4.jpeg) 
+
+![Top Teams](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/1.jpeg | height=300) ![My Fixtures](https://raw.githubusercontent.com/snehaljha/Score_ionic/master/img/4.jpeg | height=300) 
+
+
 
 ## Requirements
 
