@@ -1,4 +1,4 @@
-import { Storage } from '@capacitor/storage';
+import { Storage } from '@ionic/storage';
 import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
 
@@ -7,77 +7,25 @@ import { Team } from '../models/team';
 })
 export class FavouriteService {
 
-  private favourites: Array<Team>;
-
-  init() {
-    this.getObject('favourites').then(data => {
-      this.favourites = data as unknown as Array<Team>;
-      if(!this.favourites)
-        this.favourites = new Array<Team>();
-    });
+  constructor(private storage: Storage) {
+    storage.create();
   }
 
-
   addTeam(team: Team) {
-    for(const t of this.favourites) {
-      if(t.id == team.id)
-        return;
-    }
-    this.favourites.push(team);
-    this.setObject('favourites', this.favourites);
+    this.storage.set(team.id.toString(), 'true').then(i => console.log('saved')).catch(i => console.warn(i));
   }
 
   removeTeam(team: Team) {
-    let ind=0;
-    for(const t of this.favourites) {
-      if(t.id == team.id) {
-        break;
-      }
-      ind++;
-    }
-    if(ind == this.favourites.length)
-      return;
-    this.favourites.splice(ind, 1);
-    this.setObject('favourites', this.favourites);
+    this.storage.remove(team.id.toString()).then(i => console.log('removed')).catch(i => console.warn(i));
   }
 
-  async setString(key: string, value: string) {
-      await Storage.set({ key, value });
+  async containsTeam(team: Team): Promise<boolean> {
+    let val: boolean;
+    await this.storage.get(team.id.toString()).then(i => {
+      val = i==='true';
+    });
+    console.log(val);
+    return val;
   }
-
-  async getString(key: string): Promise<{ value: any }> {
-      return (await Storage.get({ key }));
-  }
-
-  async setObject(key: string, value: any) {
-      await Storage.set({ key, value: JSON.stringify(value) });
-  }
-
-  async getObject(key: string): Promise<{ value: any }> {
-      const ret = await Storage.get({ key });
-      return JSON.parse(ret.value);
-  }
-
-
-  async removeItem(key: string) {
-      await Storage.remove({ key });
-  }
-
-  async clear() {
-      await Storage.clear();
-  }
-
-  async contains(team: Team) {
-    if(this.favourites == undefined) {
-      await this.init();
-    }
-    for(const t of this.favourites) {
-      if(t.id == team.id) {
-        return true;
-      }
-    }
-    return false;
-  }
-
 
 }

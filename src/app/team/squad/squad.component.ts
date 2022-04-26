@@ -20,13 +20,14 @@ export class SquadComponent implements OnInit {
 
   constructor(sharedTeam: SharedTeamService, public teamService: TeamService, private favouriteService: FavouriteService) {
     this.team = sharedTeam.getData();
-    favouriteService.contains(this.team).then(value => {this.team.favourite = value});
     this.basicInfo = teamService.fetchBasicInfo(this.team.id);
     this.squad = teamService.fetchSquad(this.team.id);
     this.emptyPlayerPhoto = Contants.emptyPlayerPhoto;
   }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.team.favourite = await this.favouriteService.containsTeam(this.team);
+  }
 
   getFootIcon(player: Player) {
     return 'assets/images/'+player.preferredFoot+'_foot.png';

@@ -29,16 +29,17 @@ export class FixtureEventsComponent implements OnInit {
     this.fixtureStatus = '-';
     this.fixture = sharedFixture.getData();
     this.firstFetch = true;
-    favouriteService.contains(this.fixture.homeTeam).then(value => {this.fixture.homeTeam.favourite = value});
-    favouriteService.contains(this.fixture.awayTeam).then(value => {this.fixture.awayTeam.favourite = value});
     this.info = fixtureService.fetchInfo(this.fixture.id);
     this.fixtureStatus = this.fixture.getStatusMessage();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.refreshDetails();
-    if(this.thread == undefined)
+    this.fixture.homeTeam.favourite = await this.favouriteService.containsTeam(this.fixture.homeTeam);
+    this.fixture.awayTeam.favourite = await this.favouriteService.containsTeam(this.fixture.awayTeam);
+    if(this.thread === undefined) {
       this.thread = setInterval(() => {this.refreshDetails();}, 15000);
+    }
   }
 
   ionViewWillEnter(){

@@ -27,7 +27,7 @@ export class TopTeamsService {
       }
 
       for(const t of teams) {
-        let favTeam: boolean = await this.favouriteService.contains(t);
+        let favTeam: boolean = await this.favouriteService.containsTeam(t);
         if(favTeam) {
           t.favourite = true;
         }

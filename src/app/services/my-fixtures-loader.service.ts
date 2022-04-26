@@ -50,8 +50,8 @@ export class MyFixturesLoaderService {
         } else {
           fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
         }
-        let homeFav : boolean = await this.favouriteService.contains(fixture.homeTeam);
-        let awayFav: boolean = await this.favouriteService.contains(fixture.awayTeam);
+        let homeFav : boolean = await this.favouriteService.containsTeam(fixture.homeTeam);
+        let awayFav: boolean = await this.favouriteService.containsTeam(fixture.awayTeam);
         if((homeFav || awayFav) && !set.has(fixture.id)) {
           set.add(fixture.id);
           fixtures.push(fixture);
@@ -69,8 +69,8 @@ export class MyFixturesLoaderService {
           } else {
             fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
           }
-          let homeFav : boolean = await this.favouriteService.contains(fixture.homeTeam);
-        let awayFav: boolean = await this.favouriteService.contains(fixture.awayTeam);
+          let homeFav : boolean = await this.favouriteService.containsTeam(fixture.homeTeam);
+        let awayFav: boolean = await this.favouriteService.containsTeam(fixture.awayTeam);
         if((homeFav || awayFav) && !set.has(fixture.id)) {
             set.add(fixture.id);
             fixtures.push(fixture);
@@ -88,8 +88,8 @@ export class MyFixturesLoaderService {
             } else {
               fixture = new Fixture(parsed[i], new League(parsed[i].tournament.category));
             }
-        let homeFav : boolean = await this.favouriteService.contains(fixture.homeTeam);
-        let awayFav: boolean = await this.favouriteService.contains(fixture.awayTeam);
+        let homeFav : boolean = await this.favouriteService.containsTeam(fixture.homeTeam);
+        let awayFav: boolean = await this.favouriteService.containsTeam(fixture.awayTeam);
         if((homeFav || awayFav) && !set.has(fixture.id)) {
               set.add(fixture.id);
               fixtures.push(fixture);
